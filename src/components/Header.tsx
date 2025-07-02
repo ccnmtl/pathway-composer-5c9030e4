@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutClick }) => {
   return (
     <div className="flex items-center justify-between mb-8">
-      <h1 className="text-2xl font-bold text-foreground tracking-wide">PATHWAY COMPOSER</h1>
+      <h1 className="text-2xl font-bold text-foreground tracking-wide">Pathway Composer</h1>
       <div className="flex items-center gap-4">
         <button 
           onClick={onToggleDarkMode}
