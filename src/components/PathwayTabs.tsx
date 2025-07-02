@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import PathwayCard from './PathwayCard';
 import EmptyState from './EmptyState';
 
@@ -21,6 +22,7 @@ interface PathwayTabsProps {
   onCopy: (pathway: PathwayData) => void;
   onDelete: (id: string) => void;
   onAddPath: () => void;
+  onReorderPathways: (sourceIndex: number, destinationIndex: number, category: string) => void;
 }
 
 const PathwayTabs: React.FC<PathwayTabsProps> = ({
@@ -30,8 +32,63 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
   onEdit,
   onCopy,
   onDelete,
-  onAddPath
+  onAddPath,
+  onReorderPathways
 }) => {
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
+
+    const sourceIndex = result.source.index;
+    const destinationIndex = result.destination.index;
+
+    if (sourceIndex === destinationIndex) return;
+
+    onReorderPathways(sourceIndex, destinationIndex, activeTab);
+  };
+
+  const renderTabContent = (category: string) => {
+    const categoryPathways = pathways[category];
+    
+    if (categoryPathways.length === 0) {
+      return <EmptyState category={category} />;
+    }
+
+    return (
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId={`${category}-pathways`}>
+          {(provided) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="space-y-4"
+            >
+              {categoryPathways.map((pathway, index) => (
+                <Draggable key={pathway.id} draggableId={pathway.id} index={index}>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      className={`${snapshot.isDragging ? 'opacity-50' : ''}`}
+                    >
+                      <PathwayCard
+                        pathway={pathway}
+                        onEdit={onEdit}
+                        onCopy={onCopy}
+                        onDelete={onDelete}
+                        dragHandleProps={provided.dragHandleProps}
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    );
+  };
+
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
       <div className="flex items-center justify-between mb-6">
@@ -56,48 +113,15 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
       </div>
 
       <TabsContent value="harmony" className="mt-0">
-        <div className="space-y-4">
-          {pathways.harmony.map((pathway) => (
-            <PathwayCard
-              key={pathway.id}
-              pathway={pathway}
-              onEdit={onEdit}
-              onCopy={onCopy}
-              onDelete={onDelete}
-            />
-          ))}
-          {pathways.harmony.length === 0 && <EmptyState category="harmony" />}
-        </div>
+        {renderTabContent('harmony')}
       </TabsContent>
 
       <TabsContent value="melody" className="mt-0">
-        <div className="space-y-4">
-          {pathways.melody.map((pathway) => (
-            <PathwayCard
-              key={pathway.id}
-              pathway={pathway}
-              onEdit={onEdit}
-              onCopy={onCopy}
-              onDelete={onDelete}
-            />
-          ))}
-          {pathways.melody.length === 0 && <EmptyState category="melody" />}
-        </div>
+        {renderTabContent('melody')}
       </TabsContent>
 
       <TabsContent value="rhythm" className="mt-0">
-        <div className="space-y-4">
-          {pathways.rhythm.map((pathway) => (
-            <PathwayCard
-              key={pathway.id}
-              pathway={pathway}
-              onEdit={onEdit}
-              onCopy={onCopy}
-              onDelete={onDelete}
-            />
-          ))}
-          {pathways.rhythm.length === 0 && <EmptyState category="rhythm" />}
-        </div>
+        {renderTabContent('rhythm')}
       </TabsContent>
     </Tabs>
   );

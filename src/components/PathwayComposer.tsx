@@ -111,6 +111,19 @@ const PathwayComposer: React.FC = () => {
     }));
   };
 
+  const handleReorderPathways = (sourceIndex: number, destinationIndex: number, category: string) => {
+    setPathways(prev => {
+      const categoryPathways = [...prev[category]];
+      const [reorderedItem] = categoryPathways.splice(sourceIndex, 1);
+      categoryPathways.splice(destinationIndex, 0, reorderedItem);
+      
+      return {
+        ...prev,
+        [category]: categoryPathways
+      };
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-8">
@@ -128,6 +141,7 @@ const PathwayComposer: React.FC = () => {
           onCopy={handleCopy}
           onDelete={handleDelete}
           onAddPath={handleAddPath}
+          onReorderPathways={handleReorderPathways}
         />
 
         <EditPathwayModal
