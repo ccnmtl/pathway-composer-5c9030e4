@@ -123,7 +123,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
         </div>
         
         {/* Action buttons */}
-        <div className="px-4 py-3 border-t border-border flex flex-col sm:flex-row justify-end gap-2">
+        <div className="px-4 py-3 border-t border-border flex flex-row justify-end gap-2">
           <Button
             variant="ghost"
             size="sm"
