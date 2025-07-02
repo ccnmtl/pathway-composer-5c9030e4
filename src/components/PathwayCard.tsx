@@ -46,46 +46,78 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           {/* Drag Handle */}
           <div 
             {...dragHandleProps}
-            className="flex items-center justify-center w-8 bg-muted/50 cursor-grab active:cursor-grabbing hover:bg-muted/70 transition-colors border-r border-border"
+            className="flex items-center justify-center w-10 md:w-8 bg-muted/50 cursor-grab active:cursor-grabbing hover:bg-muted/70 transition-colors border-r border-border"
           >
-            <GripVertical size={16} className="text-muted-foreground" />
+            <GripVertical size={20} className="md:size-4 text-muted-foreground" />
           </div>
           
           {/* Content */}
           <div className="flex-1">
-            <div className="grid grid-cols-4 gap-0">
-              {/* Topics */}
-              <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
-                <p className="text-sm text-card-foreground break-words">{pathway.topics}</p>
+            {/* Mobile Layout - Stacked */}
+            <div className="block md:hidden">
+              <div className="p-4 space-y-4">
+                {/* Topics */}
+                <div>
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
+                  <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topics}</p>
+                </div>
+                
+                {/* Arrangements */}
+                <div>
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
+                  <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.arrangements}</p>
+                </div>
+                
+                {/* Exercises */}
+                <div>
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
+                  <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercises}</p>
+                </div>
+                
+                {/* Actions */}
+                <div>
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
+                  <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
+                </div>
               </div>
-              
-              {/* Arrangements */}
-              <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
-                <p className="text-sm text-card-foreground break-words">{pathway.arrangements}</p>
-              </div>
-              
-              {/* Exercises */}
-              <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
-                <p className="text-sm text-card-foreground break-words">{pathway.exercises}</p>
-              </div>
-              
-              {/* Actions */}
-              <div className="p-4">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
-                <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
+            </div>
+
+            {/* Desktop/Tablet Layout - Grid */}
+            <div className="hidden md:block">
+              <div className="grid grid-cols-4 gap-0">
+                {/* Topics */}
+                <div className="p-4 border-r border-border">
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
+                  <p className="text-sm text-card-foreground break-words">{pathway.topics}</p>
+                </div>
+                
+                {/* Arrangements */}
+                <div className="p-4 border-r border-border">
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
+                  <p className="text-sm text-card-foreground break-words">{pathway.arrangements}</p>
+                </div>
+                
+                {/* Exercises */}
+                <div className="p-4 border-r border-border">
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
+                  <p className="text-sm text-card-foreground break-words">{pathway.exercises}</p>
+                </div>
+                
+                {/* Actions */}
+                <div className="p-4">
+                  <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
+                  <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
+                </div>
               </div>
             </div>
             
             {/* Action buttons */}
-            <div className="px-4 py-3 border-t border-border flex justify-end gap-2">
+            <div className="px-4 py-3 border-t border-border flex flex-col sm:flex-row justify-end gap-2">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => onEdit(pathway)}
-                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs"
+                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
               >
                 Edit
               </Button>
@@ -93,7 +125,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onCopy(pathway)}
-                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs"
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
               >
                 Copy
               </Button>
@@ -103,7 +135,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs"
+                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
                   >
                     Delete
                   </Button>
