@@ -33,19 +33,19 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
       <div className="hidden md:flex items-center gap-4">
         <button 
           onClick={onToggleDarkMode}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline"
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           Dark Mode
         </button>
         <button
           onClick={onGlossaryClick}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline"
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           Glossary
         </button>
         <button
           onClick={onAboutClick}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline"
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           About
         </button>
