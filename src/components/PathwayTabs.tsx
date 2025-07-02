@@ -54,38 +54,59 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
     }
 
     return (
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId={`${category}-pathways`}>
-          {(provided) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className="space-y-4"
-            >
-              {categoryPathways.map((pathway, index) => (
-                <Draggable key={pathway.id} draggableId={pathway.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      className={`${snapshot.isDragging ? 'opacity-50' : ''}`}
-                    >
-                      <PathwayCard
-                        pathway={pathway}
-                        onEdit={onEdit}
-                        onCopy={onCopy}
-                        onDelete={onDelete}
-                        dragHandleProps={provided.dragHandleProps}
-                      />
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
+      <>
+        {/* Column Headers - Desktop Only */}
+        <div className="hidden md:flex mb-4">
+          <div className="w-8"></div> {/* Space for drag handle */}
+          <div className="flex-1 grid grid-cols-4 gap-0">
+            <div className="px-4 py-2">
+              <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPICS</h3>
             </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+            <div className="px-4 py-2">
+              <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ARRANGEMENTS</h3>
+            </div>
+            <div className="px-4 py-2">
+              <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">EXERCISES</h3>
+            </div>
+            <div className="px-4 py-2">
+              <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ACTIONS</h3>
+            </div>
+          </div>
+        </div>
+
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId={`${category}-pathways`}>
+            {(provided) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="space-y-4"
+              >
+                {categoryPathways.map((pathway, index) => (
+                  <Draggable key={pathway.id} draggableId={pathway.id} index={index}>
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        className={`${snapshot.isDragging ? 'opacity-50' : ''}`}
+                      >
+                        <PathwayCard
+                          pathway={pathway}
+                          onEdit={onEdit}
+                          onCopy={onCopy}
+                          onDelete={onDelete}
+                          dragHandleProps={provided.dragHandleProps}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </>
     );
   };
 

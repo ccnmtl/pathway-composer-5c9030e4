@@ -49,25 +49,21 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div className="p-4 space-y-4">
               {/* Topics */}
               <div>
-                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topics}</p>
               </div>
               
               {/* Arrangements */}
               <div>
-                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.arrangements}</p>
               </div>
               
               {/* Exercises */}
               <div>
-                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercises}</p>
               </div>
               
               {/* Actions */}
               <div>
-                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
               </div>
             </div>
@@ -97,25 +93,21 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div className="grid grid-cols-4 gap-0">
               {/* Topics */}
               <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
                 <p className="text-sm text-card-foreground break-words">{pathway.topics}</p>
               </div>
               
               {/* Arrangements */}
               <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
                 <p className="text-sm text-card-foreground break-words">{pathway.arrangements}</p>
               </div>
               
               {/* Exercises */}
               <div className="p-4 border-r border-border">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
                 <p className="text-sm text-card-foreground break-words">{pathway.exercises}</p>
               </div>
               
               {/* Actions */}
               <div className="p-4">
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
                 <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
               </div>
             </div>
