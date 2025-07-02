@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import PathwayTabs from './PathwayTabs';
 import EditPathwayModal from './EditPathwayModal';
+import AddPathwayModal from './AddPathwayModal';
 import AboutModal from './AboutModal';
 import GlossaryModal from './GlossaryModal';
 
@@ -16,6 +17,7 @@ interface PathwayData {
 const PathwayComposer: React.FC = () => {
   const [activeTab, setActiveTab] = useState('harmony');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isGlossaryModalOpen, setIsGlossaryModalOpen] = useState(false);
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
@@ -103,13 +105,10 @@ const PathwayComposer: React.FC = () => {
   };
 
   const handleAddPath = () => {
-    const newPathway: PathwayData = {
-      id: Date.now().toString(),
-      topics: "Let's explore scales by...",
-      arrangements: 'singing and playing with...',
-      exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-      actions: 'sing a scale in canon while playing one part on an instrument.'
-    };
+    setIsAddModalOpen(true);
+  };
+
+  const handleAddPathwaySave = (newPathway: PathwayData) => {
     setPathways(prev => ({
       ...prev,
       [activeTab]: [...prev[activeTab], newPathway]
@@ -155,6 +154,13 @@ const PathwayComposer: React.FC = () => {
           onClose={() => setIsEditModalOpen(false)}
           pathway={editingPathway}
           onSave={handleSave}
+          category={activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+        />
+
+        <AddPathwayModal
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+          onSave={handleAddPathwaySave}
           category={activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
         />
 
