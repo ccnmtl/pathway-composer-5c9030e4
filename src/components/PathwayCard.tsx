@@ -42,10 +42,11 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
   return (
     <Card className="border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
       <CardContent className="p-0">
-        {/* Mobile Layout - Grippy on Right */}
+        {/* Mobile Layout - Grippy on Right spanning full height */}
         <div className="flex md:hidden">
-          {/* Content */}
-          <div className="flex-1">
+          {/* Content and Actions */}
+          <div className="flex-1 flex flex-col">
+            {/* Content */}
             <div className="p-4 space-y-4">
               {/* Topics */}
               <div>
@@ -67,9 +68,58 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
               </div>
             </div>
+            
+            {/* Action buttons */}
+            <div className="px-4 py-3 border-t border-border flex flex-row justify-end gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onEdit(pathway)}
+                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+              >
+                Edit
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onCopy(pathway)}
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
+              >
+                Copy
+              </Button>
+              
+              <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                  >
+                    Delete
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Are you sure you want to delete this pathway? This action cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction 
+                      onClick={handleDeleteConfirm}
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
           </div>
           
-          {/* Drag Handle - Right side for mobile */}
+          {/* Drag Handle - Right side for mobile, spanning full height */}
           <div 
             {...dragHandleProps}
             className="flex items-center justify-center w-10 bg-muted/50 cursor-grab active:cursor-grabbing hover:bg-muted/70 transition-colors border-l border-border"
@@ -78,9 +128,9 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           </div>
         </div>
 
-        {/* Desktop/Tablet Layout - Grippy on Left */}
+        {/* Desktop/Tablet Layout - Grippy on Left spanning full height */}
         <div className="hidden md:flex">
-          {/* Drag Handle */}
+          {/* Drag Handle spanning full height */}
           <div 
             {...dragHandleProps}
             className="flex items-center justify-center w-8 bg-muted/50 cursor-grab active:cursor-grabbing hover:bg-muted/70 transition-colors border-r border-border"
@@ -88,8 +138,9 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <GripVertical size={16} className="text-muted-foreground" />
           </div>
           
-          {/* Content */}
-          <div className="flex-1">
+          {/* Content and Actions */}
+          <div className="flex-1 flex flex-col">
+            {/* Content */}
             <div className="grid grid-cols-4 gap-0">
               {/* Topics */}
               <div className="p-4 border-r border-border">
@@ -111,56 +162,56 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        {/* Action buttons */}
-        <div className="px-4 py-3 border-t border-border flex flex-row justify-end gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => onEdit(pathway)}
-            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
-          >
-            Edit
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => onCopy(pathway)}
-            className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
-          >
-            Copy
-          </Button>
-          
-          <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
-            <AlertDialogTrigger asChild>
+            
+            {/* Action buttons */}
+            <div className="px-4 py-3 border-t border-border flex flex-row justify-end gap-2">
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                onClick={() => onEdit(pathway)}
+                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
               >
-                Delete
+                Edit
               </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Are you sure you want to delete this pathway? This action cannot be undone.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction 
-                  onClick={handleDeleteConfirm}
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                >
-                  Delete
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onCopy(pathway)}
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
+              >
+                Copy
+              </Button>
+              
+              <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                  >
+                    Delete
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Are you sure you want to delete this pathway? This action cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction 
+                      onClick={handleDeleteConfirm}
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>
