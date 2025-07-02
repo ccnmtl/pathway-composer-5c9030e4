@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import PathwayCard from './PathwayCard';
 import EditPathwayModal from './EditPathwayModal';
+import AboutModal from './AboutModal';
 
 interface PathwayData {
   id: string;
@@ -15,6 +16,7 @@ interface PathwayData {
 const PathwayComposer: React.FC = () => {
   const [activeTab, setActiveTab] = useState('harmony');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   
@@ -57,6 +59,10 @@ const PathwayComposer: React.FC = () => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleAboutClick = () => {
+    setIsAboutModalOpen(true);
   };
 
   const handleEdit = (pathway: PathwayData) => {
@@ -118,7 +124,12 @@ const PathwayComposer: React.FC = () => {
             >
               Dark Mode
             </button>
-            <span className="text-sm text-muted-foreground">About</span>
+            <button
+              onClick={handleAboutClick}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline"
+            >
+              About
+            </button>
           </div>
         </div>
 
@@ -208,6 +219,11 @@ const PathwayComposer: React.FC = () => {
           pathway={editingPathway}
           onSave={handleSave}
           category={activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+        />
+
+        <AboutModal
+          isOpen={isAboutModalOpen}
+          onClose={() => setIsAboutModalOpen(false)}
         />
       </div>
     </div>
