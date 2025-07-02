@@ -49,25 +49,25 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div className="p-4 space-y-4">
               {/* Topics */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
+                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">TOPICS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topics}</p>
               </div>
               
               {/* Arrangements */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
+                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ARRANGEMENTS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.arrangements}</p>
               </div>
               
               {/* Exercises */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
+                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">EXERCISES</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercises}</p>
               </div>
               
               {/* Actions */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
+                <h3 className="hidden md:block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">ACTIONS</h3>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
               </div>
             </div>
