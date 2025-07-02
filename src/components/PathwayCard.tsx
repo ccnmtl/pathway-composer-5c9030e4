@@ -1,7 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 interface PathwayData {
   id: string;
@@ -19,6 +30,13 @@ interface PathwayCardProps {
 }
 
 const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDelete }) => {
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
+  const handleDeleteConfirm = () => {
+    onDelete(pathway.id);
+    setShowDeleteAlert(false);
+  };
+
   return (
     <Card className="border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
       <CardContent className="p-0">
@@ -66,14 +84,35 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           >
             Copy
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => onDelete(pathway.id)}
-            className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs"
-          >
-            Delete
-          </Button>
+          
+          <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+            <AlertDialogTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs"
+              >
+                Delete
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to delete this pathway? This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction 
+                  onClick={handleDeleteConfirm}
+                  className="bg-red-600 hover:bg-red-700 text-white"
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </CardContent>
     </Card>
