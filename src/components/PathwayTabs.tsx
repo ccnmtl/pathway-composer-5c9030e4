@@ -91,7 +91,30 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
 
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-      <div className="flex items-center justify-between mb-6">
+      {/* Mobile Layout - Stacked */}
+      <div className="flex flex-col gap-4 mb-6 md:hidden">
+        <TabsList className="grid w-full grid-cols-3 bg-card border border-border">
+          <TabsTrigger value="harmony" className="px-3 py-2 text-xs data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
+            Harmony
+          </TabsTrigger>
+          <TabsTrigger value="melody" className="px-3 py-2 text-xs opacity-50 cursor-not-allowed data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
+            Melody
+          </TabsTrigger>
+          <TabsTrigger value="rhythm" className="px-3 py-2 text-xs opacity-50 cursor-not-allowed data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
+            Rhythm
+          </TabsTrigger>
+        </TabsList>
+        
+        <Button
+          onClick={onAddPath}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 w-full"
+        >
+          Add a Path
+        </Button>
+      </div>
+
+      {/* Desktop/Tablet Layout - Side by Side */}
+      <div className="hidden md:flex items-center justify-between mb-6">
         <TabsList className="grid w-auto grid-cols-3 bg-card border border-border">
           <TabsTrigger value="harmony" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
             Harmony
