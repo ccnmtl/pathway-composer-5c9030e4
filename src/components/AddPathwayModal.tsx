@@ -187,7 +187,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             onClick={handleSave}
             className="px-6 bg-blue-600 hover:bg-blue-700"
           >
-            Add Pathway
+            Add
           </Button>
         </div>
       </DialogContent>
