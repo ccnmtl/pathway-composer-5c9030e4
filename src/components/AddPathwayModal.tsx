@@ -59,13 +59,18 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   category
 }) => {
   const [formData, setFormData] = useState({
-    topics: topicsOptions[0],
-    arrangements: arrangementsOptions[0],
-    exercises: exercisesOptions[0],
-    actions: actionsOptions[0]
+    topics: '',
+    arrangements: '',
+    exercises: '',
+    actions: ''
   });
 
   const handleSave = () => {
+    // Check if all fields are selected
+    if (!formData.topics || !formData.arrangements || !formData.exercises || !formData.actions) {
+      return; // Don't save if any field is empty
+    }
+
     const newPathway: PathwayData = {
       id: Date.now().toString(),
       ...formData
@@ -74,10 +79,10 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     // Reset form to defaults
     setFormData({
-      topics: topicsOptions[0],
-      arrangements: arrangementsOptions[0],
-      exercises: exercisesOptions[0],
-      actions: actionsOptions[0]
+      topics: '',
+      arrangements: '',
+      exercises: '',
+      actions: ''
     });
   };
 
@@ -85,10 +90,10 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     // Reset form to defaults
     setFormData({
-      topics: topicsOptions[0],
-      arrangements: arrangementsOptions[0],
-      exercises: exercisesOptions[0],
-      actions: actionsOptions[0]
+      topics: '',
+      arrangements: '',
+      exercises: '',
+      actions: ''
     });
   };
 
@@ -108,7 +113,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             </Label>
             <Select value={formData.topics} onValueChange={(value) => setFormData(prev => ({ ...prev, topics: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select a topic approach..." />
+                <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {topicsOptions.map((option, index) => (
@@ -126,7 +131,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             </Label>
             <Select value={formData.arrangements} onValueChange={(value) => setFormData(prev => ({ ...prev, arrangements: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an arrangement style..." />
+                <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {arrangementsOptions.map((option, index) => (
@@ -144,7 +149,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             </Label>
             <Select value={formData.exercises} onValueChange={(value) => setFormData(prev => ({ ...prev, exercises: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an exercise type..." />
+                <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {exercisesOptions.map((option, index) => (
@@ -162,7 +167,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             </Label>
             <Select value={formData.actions} onValueChange={(value) => setFormData(prev => ({ ...prev, actions: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an action..." />
+                <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {actionsOptions.map((option, index) => (
