@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface PathwayData {
   id: string;
@@ -20,6 +20,38 @@ interface EditPathwayModalProps {
   onSave: (pathway: PathwayData) => void;
   category: string;
 }
+
+const topicsOptions = [
+  "Let's explore scales by...",
+  "Understanding chord progressions through...",
+  "Discovering rhythmic patterns with...",
+  "Learning melodic intervals by...",
+  "Exploring harmonic structures via..."
+];
+
+const arrangementsOptions = [
+  "singing and playing with...",
+  "instrumental ensemble arrangements featuring...",
+  "vocal harmony arrangements using...",
+  "solo performance arrangements with...",
+  "call and response patterns involving..."
+];
+
+const exercisesOptions = [
+  "a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let's...",
+  "an intermediate drill focusing on timing and pitch accuracy through...",
+  "a group exercise emphasizing listening skills and ensemble playing via...",
+  "a technical study combining theory and practical application using...",
+  "a creative exploration encouraging improvisation and musical expression through..."
+];
+
+const actionsOptions = [
+  "sing a scale in canon while playing one part on an instrument.",
+  "perform a rhythmic pattern while maintaining steady tempo and dynamics.",
+  "demonstrate proper technique through guided practice and peer feedback.",
+  "create original musical phrases using learned concepts and structures.",
+  "collaborate in ensemble performance showcasing individual and group skills."
+];
 
 const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   isOpen,
@@ -74,52 +106,72 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
             <Label htmlFor="topics" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               TOPICS
             </Label>
-            <Textarea
-              id="topics"
-              value={formData.topics}
-              onChange={(e) => setFormData(prev => ({ ...prev, topics: e.target.value }))}
-              className="min-h-[80px] resize-none border-gray-200 focus:border-blue-400 focus:ring-blue-400"
-              placeholder="Let's explore scales by..."
-            />
+            <Select value={formData.topics} onValueChange={(value) => setFormData(prev => ({ ...prev, topics: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select a topic approach..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {topicsOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           
           <div>
             <Label htmlFor="arrangements" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ARRANGEMENTS
             </Label>
-            <Textarea
-              id="arrangements"
-              value={formData.arrangements}
-              onChange={(e) => setFormData(prev => ({ ...prev, arrangements: e.target.value }))}
-              className="min-h-[80px] resize-none border-gray-200 focus:border-blue-400 focus:ring-blue-400"
-              placeholder="singing and playing with..."
-            />
+            <Select value={formData.arrangements} onValueChange={(value) => setFormData(prev => ({ ...prev, arrangements: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an arrangement style..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {arrangementsOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           
           <div>
             <Label htmlFor="exercises" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               EXERCISES
             </Label>
-            <Textarea
-              id="exercises"
-              value={formData.exercises}
-              onChange={(e) => setFormData(prev => ({ ...prev, exercises: e.target.value }))}
-              className="min-h-[80px] resize-none border-gray-200 focus:border-blue-400 focus:ring-blue-400"
-              placeholder="a beginner exercise. We will sing a..."
-            />
+            <Select value={formData.exercises} onValueChange={(value) => setFormData(prev => ({ ...prev, exercises: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an exercise type..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {exercisesOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           
           <div>
             <Label htmlFor="actions" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ACTIONS
             </Label>
-            <Textarea
-              id="actions"
-              value={formData.actions}
-              onChange={(e) => setFormData(prev => ({ ...prev, actions: e.target.value }))}
-              className="min-h-[80px] resize-none border-gray-200 focus:border-blue-400 focus:ring-blue-400"
-              placeholder="sing a scale in canon while playing one part on an instrument."
-            />
+            <Select value={formData.actions} onValueChange={(value) => setFormData(prev => ({ ...prev, actions: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an action..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {actionsOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
         
