@@ -39,10 +39,10 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
           <TabsTrigger value="harmony" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
             Harmony
           </TabsTrigger>
-          <TabsTrigger value="melody" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
+          <TabsTrigger value="melody" className="px-6 py-2 opacity-50 cursor-not-allowed data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
             Melody
           </TabsTrigger>
-          <TabsTrigger value="rhythm" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
+          <TabsTrigger value="rhythm" className="px-6 py-2 opacity-50 cursor-not-allowed data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
             Rhythm
           </TabsTrigger>
         </TabsList>
