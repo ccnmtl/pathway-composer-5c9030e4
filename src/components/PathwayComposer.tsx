@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import PathwayCard from './PathwayCard';
@@ -17,6 +16,7 @@ const PathwayComposer: React.FC = () => {
   const [activeTab, setActiveTab] = useState('harmony');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   
   const [pathways, setPathways] = useState<Record<string, PathwayData[]>>({
     harmony: [
@@ -45,6 +45,19 @@ const PathwayComposer: React.FC = () => {
     melody: [],
     rhythm: []
   });
+
+  // Apply dark mode class to document element
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const handleEdit = (pathway: PathwayData) => {
     setEditingPathway(pathway);
@@ -93,27 +106,32 @@ const PathwayComposer: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 tracking-wide">PATHWAY COMPOSER</h1>
+          <h1 className="text-2xl font-bold text-foreground tracking-wide">PATHWAY COMPOSER</h1>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500">Dark Mode</span>
-            <span className="text-sm text-gray-500">About</span>
+            <button 
+              onClick={toggleDarkMode}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline"
+            >
+              Dark Mode
+            </button>
+            <span className="text-sm text-muted-foreground">About</span>
           </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex items-center justify-between mb-6">
-            <TabsList className="grid w-auto grid-cols-3 bg-white border border-gray-200">
-              <TabsTrigger value="harmony" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">
+            <TabsList className="grid w-auto grid-cols-3 bg-card border border-border">
+              <TabsTrigger value="harmony" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
                 Harmony
               </TabsTrigger>
-              <TabsTrigger value="melody" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">
+              <TabsTrigger value="melody" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
                 Melody
               </TabsTrigger>
-              <TabsTrigger value="rhythm" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">
+              <TabsTrigger value="rhythm" className="px-6 py-2 data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">
                 Rhythm
               </TabsTrigger>
             </TabsList>
@@ -138,7 +156,7 @@ const PathwayComposer: React.FC = () => {
                 />
               ))}
               {pathways.harmony.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-muted-foreground">
                   <p>No harmony pathways yet. Click "Add a Path" to get started!</p>
                 </div>
               )}
@@ -157,7 +175,7 @@ const PathwayComposer: React.FC = () => {
                 />
               ))}
               {pathways.melody.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-muted-foreground">
                   <p>No melody pathways yet. Click "Add a Path" to get started!</p>
                 </div>
               )}
@@ -176,7 +194,7 @@ const PathwayComposer: React.FC = () => {
                 />
               ))}
               {pathways.rhythm.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-muted-foreground">
                   <p>No rhythm pathways yet. Click "Add a Path" to get started!</p>
                 </div>
               )}
