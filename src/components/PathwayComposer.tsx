@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import PathwayTabs from './PathwayTabs';
 import EditPathwayModal from './EditPathwayModal';
 import AboutModal from './AboutModal';
+import GlossaryModal from './GlossaryModal';
 
 interface PathwayData {
   id: string;
@@ -17,6 +17,7 @@ const PathwayComposer: React.FC = () => {
   const [activeTab, setActiveTab] = useState('harmony');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isGlossaryModalOpen, setIsGlossaryModalOpen] = useState(false);
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   
@@ -63,6 +64,10 @@ const PathwayComposer: React.FC = () => {
 
   const handleAboutClick = () => {
     setIsAboutModalOpen(true);
+  };
+
+  const handleGlossaryClick = () => {
+    setIsGlossaryModalOpen(true);
   };
 
   const handleEdit = (pathway: PathwayData) => {
@@ -131,6 +136,7 @@ const PathwayComposer: React.FC = () => {
           isDarkMode={isDarkMode}
           onToggleDarkMode={toggleDarkMode}
           onAboutClick={handleAboutClick}
+          onGlossaryClick={handleGlossaryClick}
         />
 
         <PathwayTabs
@@ -155,6 +161,11 @@ const PathwayComposer: React.FC = () => {
         <AboutModal
           isOpen={isAboutModalOpen}
           onClose={() => setIsAboutModalOpen(false)}
+        />
+
+        <GlossaryModal
+          isOpen={isGlossaryModalOpen}
+          onClose={() => setIsGlossaryModalOpen(false)}
         />
       </div>
     </div>
