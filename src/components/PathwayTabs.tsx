@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
@@ -122,7 +121,7 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
       {/* Mobile Layout - Stacked */}
       <div className="flex flex-col gap-4 mb-6 md:hidden">
         <NavigationMenu className="w-full">
-          <NavigationMenuList className="grid w-full grid-cols-3 bg-card border border-border">
+          <NavigationMenuList className="grid w-full grid-cols-3 bg-card border border-border rounded-lg">
             <NavigationMenuItem>
               <NavigationMenuLink
                 className={`px-3 py-2 text-xs cursor-pointer flex items-center justify-center ${
@@ -163,7 +162,7 @@ const PathwayTabs: React.FC<PathwayTabsProps> = ({
       {/* Desktop/Tablet Layout - Side by Side */}
       <div className="hidden md:flex items-center justify-between mb-6">
         <NavigationMenu>
-          <NavigationMenuList className="grid w-auto grid-cols-3 bg-card border border-border">
+          <NavigationMenuList className="grid w-auto grid-cols-3 bg-card border border-border rounded-lg">
             <NavigationMenuItem>
               <NavigationMenuLink
                 className={`px-6 py-2 cursor-pointer flex items-center justify-center ${
