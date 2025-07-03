@@ -29,7 +29,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
               <NavigationMenuLink
                 className={`px-3 py-2 text-xs cursor-pointer flex items-center justify-center ${
                   activeTab === 'harmony' 
-                    ? 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300' 
+                    ? 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-lg' 
                     : 'hover:bg-accent hover:text-accent-foreground'
                 }`}
                 onClick={() => onTabChange('harmony')}
@@ -70,7 +70,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
               <NavigationMenuLink
                 className={`px-6 py-2 cursor-pointer flex items-center justify-center ${
                   activeTab === 'harmony' 
-                    ? 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300' 
+                    ? 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-lg' 
                     : 'hover:bg-accent hover:text-accent-foreground'
                 }`}
                 onClick={() => onTabChange('harmony')}
