@@ -46,11 +46,13 @@ const ensembleOptions = [
 ];
 
 const activityOptions = [
-  "sing a scale in canon while playing one part on an instrument.",
-  "perform a rhythmic pattern while maintaining steady tempo and dynamics.",
-  "demonstrate proper technique through guided practice and peer feedback.",
-  "create original musical phrases using learned concepts and structures.",
-  "collaborate in ensemble performance showcasing individual and group skills."
+  "Compose",
+  "Improvise",
+  "Move",
+  "Notate",
+  "Play",
+  "Read",
+  "Sing"
 ];
 
 const instructionOptions = [
