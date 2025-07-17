@@ -81,9 +81,12 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     exercise: ''
   });
 
+  const [showError, setShowError] = useState(false);
+
   const handleSave = () => {
     // Check if all fields are selected
     if (!formData.topic || !formData.proficiency || !formData.ensemble || !formData.activity || !formData.instruction || !formData.exercise) {
+      setShowError(true);
       return; // Don't save if any field is empty
     }
 
@@ -93,6 +96,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     };
     onSave(newPathway);
     onClose();
+    setShowError(false);
     // Reset form to defaults
     setFormData({
       topic: '',
@@ -106,6 +110,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
 
   const handleCancel = () => {
     onClose();
+    setShowError(false);
     // Reset form to defaults
     setFormData({
       topic: '',
@@ -235,6 +240,12 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             </Select>
           </div>
         </div>
+        
+        {showError && (
+          <div className="text-red-500 text-sm mt-4">
+            Make sure all options have been selected.
+          </div>
+        )}
         
         <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
           <Button
