@@ -29,11 +29,12 @@ const topicOptions = [
 ];
 
 const proficiencyOptions = [
-  "suitable for beginners",
-  "designed for intermediate students",
-  "appropriate for advanced learners",
-  "challenging for expert musicians",
-  "adaptable for all skill levels"
+  "Beginner",
+  "Intermediate",
+  "Advanced",
+  "Beginner + Intermediate",
+  "Beginner + Advanced",
+  "Intermediate + Advanced"
 ];
 
 const ensembleOptions = [
