@@ -56,11 +56,8 @@ const activityOptions = [
 ];
 
 const instructionOptions = [
-  "with guidance from a music teacher",
-  "under the supervision of a skilled instructor",
-  "with assistance from a mentor",
-  "led by an experienced musician",
-  "facilitated by a professional educator"
+  "Student-Led",
+  "Instructor-Led"
 ];
 
 const exerciseOptions = [
