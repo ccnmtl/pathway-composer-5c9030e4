@@ -11,6 +11,7 @@ interface PathwayData {
   arrangements: string;
   exercises: string;
   actions: string;
+  instructor: string;
 }
 
 interface EditPathwayModalProps {
@@ -53,6 +54,14 @@ const actionsOptions = [
   "collaborate in ensemble performance showcasing individual and group skills."
 ];
 
+const instructorOptions = [
+  "with guidance from a music teacher",
+  "under the supervision of a skilled instructor",
+  "with assistance from a mentor",
+  "led by an experienced musician",
+  "facilitated by a professional educator"
+];
+
 const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   isOpen,
   onClose,
@@ -64,7 +73,8 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     topics: '',
     arrangements: '',
     exercises: '',
-    actions: ''
+    actions: '',
+    instructor: ''
   });
 
   useEffect(() => {
@@ -73,7 +83,8 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         topics: pathway.topics,
         arrangements: pathway.arrangements,
         exercises: pathway.exercises,
-        actions: pathway.actions
+        actions: pathway.actions,
+        instructor: pathway.instructor
       });
     }
   }, [pathway]);
@@ -166,6 +177,24 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {actionsOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="instructor" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              INSTRUCTOR
+            </Label>
+            <Select value={formData.instructor} onValueChange={(value) => setFormData(prev => ({ ...prev, instructor: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an instructor..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {instructorOptions.map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>

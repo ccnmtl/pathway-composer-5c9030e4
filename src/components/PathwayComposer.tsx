@@ -12,6 +12,7 @@ interface PathwayData {
   arrangements: string;
   exercises: string;
   actions: string;
+  instructor: string;
 }
 
 const PathwayComposer: React.FC = () => {
@@ -30,21 +31,24 @@ const PathwayComposer: React.FC = () => {
         topics: "Let's explore scales by...",
         arrangements: 'singing and playing with...',
         exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.'
+        actions: 'sing a scale in canon while playing one part on an instrument.',
+        instructor: 'with guidance from a music teacher'
       },
       {
         id: '2',
         topics: "Let's explore scales by...",
         arrangements: 'singing and playing with...',
         exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.'
+        actions: 'sing a scale in canon while playing one part on an instrument.',
+        instructor: 'under the supervision of a skilled instructor'
       },
       {
         id: '3',
         topics: "Let's explore scales by...",
         arrangements: 'singing and playing with...',
         exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.'
+        actions: 'sing a scale in canon while playing one part on an instrument.',
+        instructor: 'led by an experienced musician'
       }
     ],
     melody: [],
