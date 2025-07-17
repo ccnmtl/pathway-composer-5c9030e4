@@ -83,7 +83,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onCopy(pathway)}
-                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
               >
                 Copy
               </Button>
@@ -93,7 +93,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                    className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
                   >
                     Delete
                   </Button>
@@ -177,7 +177,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onCopy(pathway)}
-                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:text-green-300 dark:hover:bg-green-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
               >
                 Copy
               </Button>
@@ -187,7 +187,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                    className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
                   >
                     Delete
                   </Button>
