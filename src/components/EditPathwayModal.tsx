@@ -24,11 +24,9 @@ interface EditPathwayModalProps {
 }
 
 const topicOptions = [
-  "Let's explore scales by...",
-  "Understanding chord progressions through...",
-  "Discovering rhythmic patterns with...",
-  "Learning melodic intervals by...",
-  "Exploring harmonic structures via..."
+  "Beat",
+  "Meter",
+  "Syncopation"
 ];
 
 const proficiencyOptions = [
