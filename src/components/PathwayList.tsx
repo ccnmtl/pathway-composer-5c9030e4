@@ -5,12 +5,12 @@ import PathwayCard from './PathwayCard';
 
 interface PathwayData {
   id: string;
-  topics: string;
-  arrangements: string;
-  exercises: string;
-  actions: string;
-  instructor: string;
+  topic: string;
   proficiency: string;
+  ensemble: string;
+  activity: string;
+  instruction: string;
+  exercise: string;
 }
 
 interface PathwayListProps {

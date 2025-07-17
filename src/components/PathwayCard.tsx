@@ -17,12 +17,12 @@ import {
 
 interface PathwayData {
   id: string;
-  topics: string;
-  arrangements: string;
-  exercises: string;
-  actions: string;
-  instructor: string;
+  topic: string;
   proficiency: string;
+  ensemble: string;
+  activity: string;
+  instruction: string;
+  exercise: string;
 }
 
 interface PathwayCardProps {
@@ -50,34 +50,34 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           <div className="flex-1 flex flex-col">
             {/* Content */}
             <div className="p-4 space-y-4">
-              {/* Topics */}
+              {/* Topic */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topics}</p>
-              </div>
-              
-              {/* Arrangements */}
-              <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.arrangements}</p>
-              </div>
-              
-              {/* Exercises */}
-              <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercises}</p>
-              </div>
-              
-              {/* Actions */}
-              <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
-              </div>
-              
-              {/* Instructor */}
-              <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.instructor}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topic}</p>
               </div>
               
               {/* Proficiency */}
               <div>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.proficiency}</p>
+              </div>
+              
+              {/* Ensemble */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.ensemble}</p>
+              </div>
+              
+              {/* Activity */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.activity}</p>
+              </div>
+              
+              {/* Instruction */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.instruction}</p>
+              </div>
+              
+              {/* Exercise */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercise}</p>
               </div>
             </div>
             
@@ -154,34 +154,34 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           <div className="flex-1 flex flex-col">
             {/* Content */}
             <div className="grid grid-cols-6 gap-0">
-              {/* Topics */}
+              {/* Topic */}
               <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.topics}</p>
-              </div>
-              
-              {/* Arrangements */}
-              <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.arrangements}</p>
-              </div>
-              
-              {/* Exercises */}
-              <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.exercises}</p>
-              </div>
-              
-              {/* Actions */}
-              <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
-              </div>
-              
-              {/* Instructor */}
-              <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.instructor}</p>
+                <p className="text-sm text-card-foreground break-words">{pathway.topic}</p>
               </div>
               
               {/* Proficiency */}
-              <div className="p-4">
+              <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.proficiency}</p>
+              </div>
+              
+              {/* Ensemble */}
+              <div className="p-4 border-r border-border">
+                <p className="text-sm text-card-foreground break-words">{pathway.ensemble}</p>
+              </div>
+              
+              {/* Activity */}
+              <div className="p-4 border-r border-border">
+                <p className="text-sm text-card-foreground break-words">{pathway.activity}</p>
+              </div>
+              
+              {/* Instruction */}
+              <div className="p-4 border-r border-border">
+                <p className="text-sm text-card-foreground break-words">{pathway.instruction}</p>
+              </div>
+              
+              {/* Exercise */}
+              <div className="p-4">
+                <p className="text-sm text-card-foreground break-words">{pathway.exercise}</p>
               </div>
             </div>
             

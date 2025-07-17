@@ -7,12 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 interface PathwayData {
   id: string;
-  topics: string;
-  arrangements: string;
-  exercises: string;
-  actions: string;
-  instructor: string;
+  topic: string;
   proficiency: string;
+  ensemble: string;
+  activity: string;
+  instruction: string;
+  exercise: string;
 }
 
 interface EditPathwayModalProps {
@@ -23,44 +23,12 @@ interface EditPathwayModalProps {
   category: string;
 }
 
-const topicsOptions = [
+const topicOptions = [
   "Let's explore scales by...",
   "Understanding chord progressions through...",
   "Discovering rhythmic patterns with...",
   "Learning melodic intervals by...",
   "Exploring harmonic structures via..."
-];
-
-const arrangementsOptions = [
-  "singing and playing with...",
-  "instrumental ensemble arrangements featuring...",
-  "vocal harmony arrangements using...",
-  "solo performance arrangements with...",
-  "call and response patterns involving..."
-];
-
-const exercisesOptions = [
-  "a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let's...",
-  "an intermediate drill focusing on timing and pitch accuracy through...",
-  "a group exercise emphasizing listening skills and ensemble playing via...",
-  "a technical study combining theory and practical application using...",
-  "a creative exploration encouraging improvisation and musical expression through..."
-];
-
-const actionsOptions = [
-  "sing a scale in canon while playing one part on an instrument.",
-  "perform a rhythmic pattern while maintaining steady tempo and dynamics.",
-  "demonstrate proper technique through guided practice and peer feedback.",
-  "create original musical phrases using learned concepts and structures.",
-  "collaborate in ensemble performance showcasing individual and group skills."
-];
-
-const instructorOptions = [
-  "with guidance from a music teacher",
-  "under the supervision of a skilled instructor",
-  "with assistance from a mentor",
-  "led by an experienced musician",
-  "facilitated by a professional educator"
 ];
 
 const proficiencyOptions = [
@@ -71,6 +39,38 @@ const proficiencyOptions = [
   "adaptable for all skill levels"
 ];
 
+const ensembleOptions = [
+  "singing and playing with...",
+  "instrumental ensemble arrangements featuring...",
+  "vocal harmony arrangements using...",
+  "solo performance arrangements with...",
+  "call and response patterns involving..."
+];
+
+const activityOptions = [
+  "sing a scale in canon while playing one part on an instrument.",
+  "perform a rhythmic pattern while maintaining steady tempo and dynamics.",
+  "demonstrate proper technique through guided practice and peer feedback.",
+  "create original musical phrases using learned concepts and structures.",
+  "collaborate in ensemble performance showcasing individual and group skills."
+];
+
+const instructionOptions = [
+  "with guidance from a music teacher",
+  "under the supervision of a skilled instructor",
+  "with assistance from a mentor",
+  "led by an experienced musician",
+  "facilitated by a professional educator"
+];
+
+const exerciseOptions = [
+  "a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let's...",
+  "an intermediate drill focusing on timing and pitch accuracy through...",
+  "a group exercise emphasizing listening skills and ensemble playing via...",
+  "a technical study combining theory and practical application using...",
+  "a creative exploration encouraging improvisation and musical expression through..."
+];
+
 const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   isOpen,
   onClose,
@@ -79,23 +79,23 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   category
 }) => {
   const [formData, setFormData] = useState({
-    topics: '',
-    arrangements: '',
-    exercises: '',
-    actions: '',
-    instructor: '',
-    proficiency: ''
+    topic: '',
+    proficiency: '',
+    ensemble: '',
+    activity: '',
+    instruction: '',
+    exercise: ''
   });
 
   useEffect(() => {
     if (pathway) {
       setFormData({
-        topics: pathway.topics,
-        arrangements: pathway.arrangements,
-        exercises: pathway.exercises,
-        actions: pathway.actions,
-        instructor: pathway.instructor,
-        proficiency: pathway.proficiency
+        topic: pathway.topic,
+        proficiency: pathway.proficiency,
+        ensemble: pathway.ensemble,
+        activity: pathway.activity,
+        instruction: pathway.instruction,
+        exercise: pathway.exercise
       });
     }
   }, [pathway]);
@@ -125,87 +125,15 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         
         <div className="space-y-6 py-4">
           <div>
-            <Label htmlFor="topics" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              TOPICS
+            <Label htmlFor="topic" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              TOPIC
             </Label>
-            <Select value={formData.topics} onValueChange={(value) => setFormData(prev => ({ ...prev, topics: value }))}>
+            <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
                 <SelectValue placeholder="Select a topic approach..." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {topicsOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div>
-            <Label htmlFor="arrangements" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ARRANGEMENTS
-            </Label>
-            <Select value={formData.arrangements} onValueChange={(value) => setFormData(prev => ({ ...prev, arrangements: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an arrangement style..." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {arrangementsOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div>
-            <Label htmlFor="exercises" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              EXERCISES
-            </Label>
-            <Select value={formData.exercises} onValueChange={(value) => setFormData(prev => ({ ...prev, exercises: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an exercise type..." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {exercisesOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div>
-            <Label htmlFor="actions" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ACTIONS
-            </Label>
-            <Select value={formData.actions} onValueChange={(value) => setFormData(prev => ({ ...prev, actions: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an action..." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {actionsOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div>
-            <Label htmlFor="instructor" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              INSTRUCTOR
-            </Label>
-            <Select value={formData.instructor} onValueChange={(value) => setFormData(prev => ({ ...prev, instructor: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select an instructor..." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {instructorOptions.map((option, index) => (
+                {topicOptions.map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
@@ -224,6 +152,78 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {proficiencyOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              ENSEMBLE
+            </Label>
+            <Select value={formData.ensemble} onValueChange={(value) => setFormData(prev => ({ ...prev, ensemble: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an ensemble style..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {ensembleOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              ACTIVITY
+            </Label>
+            <Select value={formData.activity} onValueChange={(value) => setFormData(prev => ({ ...prev, activity: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an activity..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {activityOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              INSTRUCTION
+            </Label>
+            <Select value={formData.instruction} onValueChange={(value) => setFormData(prev => ({ ...prev, instruction: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select instruction type..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {instructionOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              EXERCISE
+            </Label>
+            <Select value={formData.exercise} onValueChange={(value) => setFormData(prev => ({ ...prev, exercise: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select an exercise type..." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {exerciseOptions.map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>

@@ -8,12 +8,12 @@ import GlossaryModal from './GlossaryModal';
 
 interface PathwayData {
   id: string;
-  topics: string;
-  arrangements: string;
-  exercises: string;
-  actions: string;
-  instructor: string;
+  topic: string;
   proficiency: string;
+  ensemble: string;
+  activity: string;
+  instruction: string;
+  exercise: string;
 }
 
 const PathwayComposer: React.FC = () => {
@@ -29,30 +29,30 @@ const PathwayComposer: React.FC = () => {
     harmony: [
       {
         id: '1',
-        topics: "Let's explore scales by...",
-        arrangements: 'singing and playing with...',
-        exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.',
-        instructor: 'with guidance from a music teacher',
-        proficiency: 'suitable for beginners'
+        topic: "Let's explore scales by...",
+        proficiency: 'suitable for beginners',
+        ensemble: 'singing and playing with...',
+        activity: 'sing a scale in canon while playing one part on an instrument.',
+        instruction: 'with guidance from a music teacher',
+        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
       },
       {
         id: '2',
-        topics: "Let's explore scales by...",
-        arrangements: 'singing and playing with...',
-        exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.',
-        instructor: 'under the supervision of a skilled instructor',
-        proficiency: 'designed for intermediate students'
+        topic: "Let's explore scales by...",
+        proficiency: 'designed for intermediate students',
+        ensemble: 'singing and playing with...',
+        activity: 'sing a scale in canon while playing one part on an instrument.',
+        instruction: 'under the supervision of a skilled instructor',
+        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
       },
       {
         id: '3',
-        topics: "Let's explore scales by...",
-        arrangements: 'singing and playing with...',
-        exercises: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...',
-        actions: 'sing a scale in canon while playing one part on an instrument.',
-        instructor: 'led by an experienced musician',
-        proficiency: 'appropriate for advanced learners'
+        topic: "Let's explore scales by...",
+        proficiency: 'appropriate for advanced learners',
+        ensemble: 'singing and playing with...',
+        activity: 'sing a scale in canon while playing one part on an instrument.',
+        instruction: 'led by an experienced musician',
+        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
       }
     ],
     melody: [],
