@@ -40,7 +40,7 @@ const proficiencyOptions = [
 
 const ensembleOptions = [
   "Solo",
-  "Duet",
+  "Duo",
   "Trio",
   "Quartet"
 ];
