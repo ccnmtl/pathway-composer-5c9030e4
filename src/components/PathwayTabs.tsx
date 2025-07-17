@@ -10,6 +10,7 @@ interface PathwayData {
   exercises: string;
   actions: string;
   instructor: string;
+  proficiency: string;
 }
 
 interface PathwayTabsProps {

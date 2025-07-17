@@ -12,6 +12,7 @@ interface PathwayData {
   exercises: string;
   actions: string;
   instructor: string;
+  proficiency: string;
 }
 
 interface AddPathwayModalProps {
@@ -61,6 +62,14 @@ const instructorOptions = [
   "facilitated by a professional educator"
 ];
 
+const proficiencyOptions = [
+  "suitable for beginners",
+  "designed for intermediate students",
+  "appropriate for advanced learners",
+  "challenging for expert musicians",
+  "adaptable for all skill levels"
+];
+
 const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   isOpen,
   onClose,
@@ -72,12 +81,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     arrangements: '',
     exercises: '',
     actions: '',
-    instructor: ''
+    instructor: '',
+    proficiency: ''
   });
 
   const handleSave = () => {
     // Check if all fields are selected
-    if (!formData.topics || !formData.arrangements || !formData.exercises || !formData.actions || !formData.instructor) {
+    if (!formData.topics || !formData.arrangements || !formData.exercises || !formData.actions || !formData.instructor || !formData.proficiency) {
       return; // Don't save if any field is empty
     }
 
@@ -93,7 +103,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       arrangements: '',
       exercises: '',
       actions: '',
-      instructor: ''
+      instructor: '',
+      proficiency: ''
     });
   };
 
@@ -105,7 +116,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       arrangements: '',
       exercises: '',
       actions: '',
-      instructor: ''
+      instructor: '',
+      proficiency: ''
     });
   };
 
@@ -201,6 +213,24 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 {instructorOptions.map((option, index) => (
+                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              PROFICIENCY
+            </Label>
+            <Select value={formData.proficiency} onValueChange={(value) => setFormData(prev => ({ ...prev, proficiency: value }))}>
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+                <SelectValue placeholder="Select one." />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {proficiencyOptions.map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>

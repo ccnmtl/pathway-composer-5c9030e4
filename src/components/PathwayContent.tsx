@@ -10,6 +10,7 @@ interface PathwayData {
   exercises: string;
   actions: string;
   instructor: string;
+  proficiency: string;
 }
 
 interface PathwayContentProps {
@@ -38,7 +39,7 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
       {/* Column Headers - Desktop Only */}
       <div className="hidden md:flex mb-4">
         <div className="w-8"></div> {/* Space for drag handle */}
-        <div className="flex-1 grid grid-cols-4 gap-0">
+        <div className="flex-1 grid grid-cols-6 gap-0">
           <div className="px-4 py-2">
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPICS</h3>
           </div>
@@ -50,6 +51,12 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
           </div>
           <div className="px-4 py-2">
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ACTIONS</h3>
+          </div>
+          <div className="px-4 py-2">
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">INSTRUCTOR</h3>
+          </div>
+          <div className="px-4 py-2">
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">PROFICIENCY</h3>
           </div>
         </div>
       </div>
