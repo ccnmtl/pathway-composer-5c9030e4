@@ -68,6 +68,11 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               <div>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.actions}</p>
               </div>
+              
+              {/* Instructor */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.instructor}</p>
+              </div>
             </div>
             
             {/* Action buttons */}
@@ -142,7 +147,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           {/* Content and Actions */}
           <div className="flex-1 flex flex-col">
             {/* Content */}
-            <div className="grid grid-cols-4 gap-0">
+            <div className="grid grid-cols-5 gap-0">
               {/* Topics */}
               <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.topics}</p>
@@ -159,8 +164,13 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               </div>
               
               {/* Actions */}
-              <div className="p-4">
+              <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.actions}</p>
+              </div>
+              
+              {/* Instructor */}
+              <div className="p-4">
+                <p className="text-sm text-card-foreground break-words">{pathway.instructor}</p>
               </div>
             </div>
             
