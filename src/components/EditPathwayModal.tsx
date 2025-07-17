@@ -61,11 +61,10 @@ const instructionOptions = [
 ];
 
 const exerciseOptions = [
-  "a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let's...",
-  "an intermediate drill focusing on timing and pitch accuracy through...",
-  "a group exercise emphasizing listening skills and ensemble playing via...",
-  "a technical study combining theory and practical application using...",
-  "a creative exploration encouraging improvisation and musical expression through..."
+  "Changing",
+  "Dictation",
+  "Matching",
+  "Plastique Animée"
 ];
 
 const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
