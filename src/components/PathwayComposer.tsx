@@ -17,7 +17,7 @@ interface PathwayData {
 }
 
 const PathwayComposer: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('harmony');
+  const [activeTab, setActiveTab] = useState('rhythm');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
