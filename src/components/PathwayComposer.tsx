@@ -26,35 +26,7 @@ const PathwayComposer: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   
   const [pathways, setPathways] = useState<Record<string, PathwayData[]>>({
-    harmony: [
-      {
-        id: '1',
-        topic: "Let's explore scales by...",
-        proficiency: 'suitable for beginners',
-        ensemble: 'singing and playing with...',
-        activity: 'sing a scale in canon while playing one part on an instrument.',
-        instruction: 'with guidance from a music teacher',
-        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
-      },
-      {
-        id: '2',
-        topic: "Let's explore scales by...",
-        proficiency: 'designed for intermediate students',
-        ensemble: 'singing and playing with...',
-        activity: 'sing a scale in canon while playing one part on an instrument.',
-        instruction: 'under the supervision of a skilled instructor',
-        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
-      },
-      {
-        id: '3',
-        topic: "Let's explore scales by...",
-        proficiency: 'appropriate for advanced learners',
-        ensemble: 'singing and playing with...',
-        activity: 'sing a scale in canon while playing one part on an instrument.',
-        instruction: 'led by an experienced musician',
-        exercise: 'a beginner exercise. We will sing a scale in canon while playing one part on an instrument. Let\'s...'
-      }
-    ],
+    harmony: [],
     melody: [],
     rhythm: []
   });
