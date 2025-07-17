@@ -39,11 +39,10 @@ const proficiencyOptions = [
 ];
 
 const ensembleOptions = [
-  "singing and playing with...",
-  "instrumental ensemble arrangements featuring...",
-  "vocal harmony arrangements using...",
-  "solo performance arrangements with...",
-  "call and response patterns involving..."
+  "Solo",
+  "Duet",
+  "Trio",
+  "Quartet"
 ];
 
 const activityOptions = [
