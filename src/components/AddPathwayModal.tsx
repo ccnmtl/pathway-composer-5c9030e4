@@ -20,6 +20,7 @@ interface AddPathwayModalProps {
   onClose: () => void;
   onSave: (pathway: PathwayData) => void;
   category: string;
+  existingPathways: PathwayData[];
 }
 
 const topicOptions = [
@@ -70,7 +71,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   isOpen,
   onClose,
   onSave,
-  category
+  category,
+  existingPathways
 }) => {
   const [formData, setFormData] = useState({
     topic: '',
@@ -82,12 +84,30 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   });
 
   const [showError, setShowError] = useState(false);
+  const [showDuplicateError, setShowDuplicateError] = useState(false);
 
   const handleSave = () => {
     // Check if all fields are selected
     if (!formData.topic || !formData.proficiency || !formData.ensemble || !formData.activity || !formData.instruction || !formData.exercise) {
       setShowError(true);
+      setShowDuplicateError(false);
       return; // Don't save if any field is empty
+    }
+
+    // Check for duplicates
+    const isDuplicate = existingPathways.some(pathway => 
+      pathway.topic === formData.topic &&
+      pathway.proficiency === formData.proficiency &&
+      pathway.ensemble === formData.ensemble &&
+      pathway.activity === formData.activity &&
+      pathway.instruction === formData.instruction &&
+      pathway.exercise === formData.exercise
+    );
+
+    if (isDuplicate) {
+      setShowDuplicateError(true);
+      setShowError(false);
+      return;
     }
 
     const newPathway: PathwayData = {
@@ -97,6 +117,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onSave(newPathway);
     onClose();
     setShowError(false);
+    setShowDuplicateError(false);
     // Reset form to defaults
     setFormData({
       topic: '',
@@ -111,6 +132,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   const handleCancel = () => {
     onClose();
     setShowError(false);
+    setShowDuplicateError(false);
     // Reset form to defaults
     setFormData({
       topic: '',
@@ -244,6 +266,12 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
         {showError && (
           <div className="text-red-500 text-sm mt-4">
             Make sure all options have been selected.
+          </div>
+        )}
+        
+        {showDuplicateError && (
+          <div className="text-red-500 text-sm mt-4">
+            This pathway already exists. Please select different options.
           </div>
         )}
         

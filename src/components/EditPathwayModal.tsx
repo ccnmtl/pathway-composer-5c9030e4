@@ -21,6 +21,7 @@ interface EditPathwayModalProps {
   pathway: PathwayData | null;
   onSave: (pathway: PathwayData) => void;
   category: string;
+  existingPathways: PathwayData[];
 }
 
 const topicOptions = [
@@ -72,7 +73,8 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   onClose,
   pathway,
   onSave,
-  category
+  category,
+  existingPathways
 }) => {
   const [formData, setFormData] = useState({
     topic: '',
@@ -84,6 +86,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   });
 
   const [showError, setShowError] = useState(false);
+  const [showDuplicateError, setShowDuplicateError] = useState(false);
 
   useEffect(() => {
     if (pathway) {
@@ -102,7 +105,25 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     // Check if all fields are selected
     if (!formData.topic || !formData.proficiency || !formData.ensemble || !formData.activity || !formData.instruction || !formData.exercise) {
       setShowError(true);
+      setShowDuplicateError(false);
       return; // Don't save if any field is empty
+    }
+
+    // Check for duplicates (excluding the current pathway being edited)
+    const isDuplicate = existingPathways.some(existingPathway => 
+      existingPathway.id !== pathway?.id &&
+      existingPathway.topic === formData.topic &&
+      existingPathway.proficiency === formData.proficiency &&
+      existingPathway.ensemble === formData.ensemble &&
+      existingPathway.activity === formData.activity &&
+      existingPathway.instruction === formData.instruction &&
+      existingPathway.exercise === formData.exercise
+    );
+
+    if (isDuplicate) {
+      setShowDuplicateError(true);
+      setShowError(false);
+      return;
     }
 
     if (pathway) {
@@ -113,10 +134,12 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
     onClose();
     setShowError(false);
+    setShowDuplicateError(false);
   };
 
   const handleCancel = () => {
     setShowError(false);
+    setShowDuplicateError(false);
     onClose();
   };
 
@@ -242,6 +265,12 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         {showError && (
           <div className="text-red-500 text-sm mt-4">
             Make sure all options have been selected.
+          </div>
+        )}
+        
+        {showDuplicateError && (
+          <div className="text-red-500 text-sm mt-4">
+            This pathway already exists. Please select different options.
           </div>
         )}
         

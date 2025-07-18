@@ -135,6 +135,7 @@ const PathwayComposer: React.FC = () => {
           pathway={editingPathway}
           onSave={handleSave}
           category={activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+          existingPathways={pathways[activeTab]}
         />
 
         <AddPathwayModal
@@ -142,6 +143,7 @@ const PathwayComposer: React.FC = () => {
           onClose={() => setIsAddModalOpen(false)}
           onSave={handleAddPathwaySave}
           category={activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+          existingPathways={pathways[activeTab]}
         />
 
         <AboutModal
