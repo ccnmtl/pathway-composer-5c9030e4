@@ -25,11 +25,26 @@ const PathwayComposer: React.FC = () => {
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   
-  const [pathways, setPathways] = useState<Record<string, PathwayData[]>>({
-    harmony: [],
-    melody: [],
-    rhythm: []
+  const [pathways, setPathways] = useState<Record<string, PathwayData[]>>(() => {
+    const saved = localStorage.getItem('pathways');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (error) {
+        console.error('Failed to parse saved pathways:', error);
+      }
+    }
+    return {
+      harmony: [],
+      melody: [],
+      rhythm: []
+    };
   });
+
+  // Save pathways to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('pathways', JSON.stringify(pathways));
+  }, [pathways]);
 
   // Apply dark mode class to document element
   useEffect(() => {
