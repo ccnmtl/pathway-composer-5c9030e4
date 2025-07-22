@@ -52,32 +52,32 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div className="p-4 space-y-4">
               {/* Topic */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topic}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.topic}</p>
               </div>
               
               {/* Proficiency */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.proficiency}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.proficiency}</p>
               </div>
               
               {/* Ensemble */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.ensemble}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.ensemble}</p>
               </div>
               
               {/* Activity */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.activity}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.activity}</p>
               </div>
               
               {/* Instruction */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.instruction}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.instruction}</p>
               </div>
               
               {/* Exercise */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercise}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">/ {pathway.exercise}</p>
               </div>
             </div>
             
