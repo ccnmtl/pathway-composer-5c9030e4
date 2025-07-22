@@ -23,7 +23,10 @@ const PathwayComposer: React.FC = () => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isGlossaryModalOpen, setIsGlossaryModalOpen] = useState(false);
   const [editingPathway, setEditingPathway] = useState<PathwayData | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('isDarkMode');
+    return saved ? JSON.parse(saved) : false;
+  });
   
   const [pathways, setPathways] = useState<Record<string, PathwayData[]>>(() => {
     const saved = localStorage.getItem('pathways');
@@ -45,6 +48,11 @@ const PathwayComposer: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('pathways', JSON.stringify(pathways));
   }, [pathways]);
+
+  // Save dark mode preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   // Apply dark mode class to document element
   useEffect(() => {
