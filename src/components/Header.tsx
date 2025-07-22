@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
           onClick={onToggleDarkMode}
           className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
-          Dark Mode
+          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
         <button
           onClick={onGlossaryClick}
@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
                 onClick={() => handleMenuItemClick(onToggleDarkMode)}
                 className="text-left py-3 px-2 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
               >
-                Dark Mode
+                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
               </button>
               <button
                 onClick={() => handleMenuItemClick(onGlossaryClick)}
