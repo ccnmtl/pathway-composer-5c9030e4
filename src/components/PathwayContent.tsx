@@ -41,19 +41,19 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
         <div className="w-8"></div> {/* Space for drag handle */}
         <div className="flex-1 grid grid-cols-6 gap-0">
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPIC</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPIC &rarr;</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">PROFICIENCY</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">PROFICIENCY &rarr;</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ENSEMBLE</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ENSEMBLE &rarr;</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ACTIVITY</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ACTIVITY &rarr;</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">INSTRUCTION</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">INSTRUCTION &rarr;</h3>
           </div>
           <div className="px-4 py-2">
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">EXERCISE</h3>
