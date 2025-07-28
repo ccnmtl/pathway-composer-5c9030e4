@@ -44,19 +44,19 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPIC</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">/ PROFICIENCY</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">PROFICIENCY</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">/ ENSEMBLE</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ENSEMBLE</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">/ ACTIVITY</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">ACTIVITY</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">/ INSTRUCTION</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">INSTRUCTION</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">/ EXERCISE</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">EXERCISE</h3>
           </div>
         </div>
       </div>
