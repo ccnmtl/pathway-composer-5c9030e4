@@ -148,7 +148,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-lg font-medium">
-            Rhythm / Edit Pathway
+            {category} / Edit Pathway
           </DialogTitle>
         </DialogHeader>
         
