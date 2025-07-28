@@ -48,12 +48,17 @@ const getProficiencyOptions = (category: string) => {
   }
 };
 
-const ensembleOptions = [
-  "Solo",
-  "Duet",
-  "Trio",
-  "Quartet"
-];
+const getEnsembleOptions = (category: string) => {
+  switch (category) {
+    case "Rhythm":
+    case "Melody":
+      return ["Solo", "Duet", "Trio", "Quartet"];
+    case "Harmony":
+      return ["Solo", "Duo"];
+    default:
+      return [];
+  }
+};
 
 const getActivityOptions = (category: string) => {
   switch (category) {
@@ -217,7 +222,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                 <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {ensembleOptions.map((option, index) => (
+                {getEnsembleOptions(category).map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
