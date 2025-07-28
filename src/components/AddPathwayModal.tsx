@@ -23,11 +23,18 @@ interface AddPathwayModalProps {
   existingPathways: PathwayData[];
 }
 
-const topicOptions = [
-  "Beat",
-  "Meter",
-  "Syncopation"
-];
+const getTopicOptions = (category: string) => {
+  switch (category) {
+    case "Rhythm":
+      return ["Beat", "Meter", "Syncopation"];
+    case "Melody":
+      return ["Scales"];
+    case "Harmony":
+      return ["Enharmony"];
+    default:
+      return [];
+  }
+};
 
 const proficiencyOptions = [
   "Beginner",
@@ -163,7 +170,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                 <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {topicOptions.map((option, index) => (
+                {getTopicOptions(category).map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
