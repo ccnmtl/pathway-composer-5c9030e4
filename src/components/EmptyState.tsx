@@ -8,7 +8,7 @@ interface EmptyStateProps {
 const EmptyState: React.FC<EmptyStateProps> = ({ category }) => {
   return (
     <div className="text-center py-12 text-muted-foreground">
-      <p>No {category} pathways yet.</p><p className="py-6">Click "Add a Path" button to get started!</p>
+      <p>No {category} pathways yet.</p><p className="py-6">Click the "Add a Path" button to get started!</p>
     </div>
   );
 };
