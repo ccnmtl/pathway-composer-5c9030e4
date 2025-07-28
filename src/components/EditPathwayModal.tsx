@@ -53,15 +53,18 @@ const ensembleOptions = [
   "Quartet"
 ];
 
-const activityOptions = [
-  "Compose",
-  "Improvise",
-  "Move",
-  "Notate",
-  "Play",
-  "Read",
-  "Sing"
-];
+const getActivityOptions = (category: string) => {
+  switch (category) {
+    case "Rhythm":
+      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
+    case "Melody":
+      return ["Sing", "Play"];
+    case "Harmony":
+      return ["Sing", "Play"];
+    default:
+      return [];
+  }
+};
 
 const instructionOptions = [
   "Student-Led",
@@ -223,7 +226,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                 <SelectValue placeholder="Select an activity..." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {activityOptions.map((option, index) => (
+                {getActivityOptions(category).map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
