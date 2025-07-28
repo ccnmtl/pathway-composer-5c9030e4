@@ -82,8 +82,9 @@ const instructionOptions = [
 const getExerciseOptions = (category: string) => {
   switch (category) {
     case "Rhythm":
-    case "Melody":
       return ["Changing", "Dictation", "Matching", "Plastique Animée"];
+    case "Melody":
+      return ["One Scale", "Two Scales", "Three Scales"];
     case "Harmony":
       return ["One Note", "Two Whole Step Notes", "New Scale", "Any Scale"];
     default:
