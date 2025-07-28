@@ -57,7 +57,7 @@ const getActivityOptions = (category: string) => {
     case "Rhythm":
       return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
     case "Melody":
-      return ["Sing", "Play"];
+      return ["Sing", "Play", "Movement"];
     case "Harmony":
       return ["Sing", "Play"];
     default:
