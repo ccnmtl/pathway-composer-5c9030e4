@@ -74,12 +74,17 @@ const instructionOptions = [
   "Instructor-Led"
 ];
 
-const exerciseOptions = [
-  "Changing",
-  "Dictation",
-  "Matching",
-  "Plastique Animée"
-];
+const getExerciseOptions = (category: string) => {
+  switch (category) {
+    case "Rhythm":
+    case "Melody":
+      return ["Changing", "Dictation", "Matching", "Plastique Animée"];
+    case "Harmony":
+      return ["One Note", "Two Whole Step Notes", "New Scale", "Any Scale"];
+    default:
+      return [];
+  }
+};
 
 const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   isOpen,
@@ -265,7 +270,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                 <SelectValue placeholder="Select an exercise type..." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {exerciseOptions.map((option, index) => (
+                {getExerciseOptions(category).map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
