@@ -62,7 +62,8 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				warning: 'hsl(var(--warning))'
+				warning: 'hsl(var(--warning))',
+				overlay: 'hsl(var(--overlay))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
