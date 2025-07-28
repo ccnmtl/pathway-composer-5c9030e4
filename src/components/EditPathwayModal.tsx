@@ -37,14 +37,17 @@ const getTopicOptions = (category: string) => {
   }
 };
 
-const proficiencyOptions = [
-  "Beginner",
-  "Intermediate",
-  "Advanced",
-  "Beginner + Intermediate",
-  "Beginner + Advanced",
-  "Intermediate + Advanced"
-];
+const getProficiencyOptions = (category: string) => {
+  switch (category) {
+    case "Rhythm":
+      return ["Beginner", "Intermediate", "Advanced", "Beginner + Intermediate", "Beginner + Advanced", "Intermediate + Advanced"];
+    case "Melody":
+    case "Harmony":
+      return ["Beginner", "Intermediate", "Advanced"];
+    default:
+      return [];
+  }
+};
 
 const ensembleOptions = [
   "Solo",
@@ -190,7 +193,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                 <SelectValue placeholder="Select proficiency level..." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {proficiencyOptions.map((option, index) => (
+                {getProficiencyOptions(category).map((option, index) => (
                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     {option}
                   </SelectItem>
