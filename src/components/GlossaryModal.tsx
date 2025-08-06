@@ -32,13 +32,8 @@ const GlossaryModal: React.FC<GlossaryModalProps> = ({ isOpen, onClose }) => {
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold mb-4">Music Glossary</DialogTitle>
         </DialogHeader>
-        <div className="space-y-4">
-          {glossaryTerms.map((item, index) => (
-            <div key={index} className="border-b border-border pb-3 last:border-b-0">
-              <h3 className="font-semibold text-foreground mb-1">{item.term}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.definition}</p>
-            </div>
-          ))}
+        <div>
+          <p className="text-sm text-foreground">Coming Soon</p>
         </div>
       </DialogContent>
     </Dialog>
