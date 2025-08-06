@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 interface PathwayData {
   id: string;
@@ -13,6 +14,7 @@ interface PathwayData {
   activity: string;
   instruction: string;
   exercise: string;
+  facultyNotes: string;
 }
 
 interface AddPathwayModalProps {
@@ -104,7 +106,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     ensemble: '',
     activity: '',
     instruction: '',
-    exercise: ''
+    exercise: '',
+    facultyNotes: ''
   });
 
   const [showError, setShowError] = useState(false);
@@ -149,7 +152,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       ensemble: '',
       activity: '',
       instruction: '',
-      exercise: ''
+      exercise: '',
+      facultyNotes: ''
     });
   };
 
@@ -164,7 +168,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       ensemble: '',
       activity: '',
       instruction: '',
-      exercise: ''
+      exercise: '',
+      facultyNotes: ''
     });
   };
 
@@ -284,6 +289,19 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                 ))}
               </SelectContent>
             </Select>
+          </div>
+          
+          <div>
+            <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              FACULTY NOTES
+            </Label>
+            <Textarea
+              id="facultyNotes"
+              value={formData.facultyNotes}
+              onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
+              placeholder="Enter faculty notes..."
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+            />
           </div>
         </div>
         

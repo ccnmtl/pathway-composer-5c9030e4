@@ -14,6 +14,7 @@ interface PathwayData {
   activity: string;
   instruction: string;
   exercise: string;
+  facultyNotes: string;
 }
 
 const PathwayComposer: React.FC = () => {
