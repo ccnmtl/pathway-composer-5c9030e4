@@ -23,6 +23,7 @@ interface PathwayData {
   activity: string;
   instruction: string;
   exercise: string;
+  facultyNotes: string;
 }
 
 interface PathwayCardProps {
@@ -78,6 +79,11 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               {/* Exercise */}
               <div>
                 <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercise}</p>
+              </div>
+              
+              {/* Faculty Notes */}
+              <div>
+                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.facultyNotes}</p>
               </div>
             </div>
             
@@ -153,7 +159,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           {/* Content and Actions */}
           <div className="flex-1 flex flex-col">
             {/* Content */}
-            <div className="grid grid-cols-6 gap-0">
+            <div className="grid grid-cols-7 gap-0">
               {/* Topic */}
               <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.topic}</p>
@@ -180,8 +186,13 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               </div>
               
               {/* Exercise */}
-              <div className="p-4">
+              <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.exercise}</p>
+              </div>
+              
+              {/* Faculty Notes */}
+              <div className="p-4">
+                <p className="text-sm text-card-foreground break-words">{pathway.facultyNotes}</p>
               </div>
             </div>
             

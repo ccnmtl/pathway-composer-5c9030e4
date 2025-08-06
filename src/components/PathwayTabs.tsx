@@ -11,6 +11,7 @@ interface PathwayData {
   activity: string;
   instruction: string;
   exercise: string;
+  facultyNotes: string;
 }
 
 interface PathwayTabsProps {
