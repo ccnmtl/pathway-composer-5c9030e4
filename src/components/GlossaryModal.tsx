@@ -30,7 +30,7 @@ const GlossaryModal: React.FC<GlossaryModalProps> = ({ isOpen, onClose }) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold mb-4">Music Glossary</DialogTitle>
+          <DialogTitle className="text-xl font-semibold mb-4">Glossary</DialogTitle>
         </DialogHeader>
         <div>
           <p className="text-sm text-foreground">Coming Soon</p>
