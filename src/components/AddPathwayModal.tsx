@@ -30,7 +30,7 @@ const getTopicOptions = (category: string) => {
     case "Rhythm":
       return ["Beat", "Meter", "Syncopation"];
     case "Melody":
-      return ["Scales"];
+      return ["Scales", "Intervals", "Chromaticism"];
     case "Harmony":
       return ["Enharmony"];
     default:
