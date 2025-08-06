@@ -159,7 +159,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
           {/* Content and Actions */}
           <div className="flex-1 flex flex-col">
             {/* Content */}
-            <div className="grid grid-cols-7 gap-0">
+            <div style={{ display: 'grid', gridTemplateColumns: '10% 10% 10% 10% 10% 25% 25%', gap: 0 }}>
               {/* Topic */}
               <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words">{pathway.topic}</p>

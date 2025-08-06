@@ -40,7 +40,7 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
       {/* Column Headers - Desktop Only */}
       <div className="hidden md:flex mb-4">
         <div className="w-8"></div> {/* Space for drag handle */}
-        <div className="flex-1 grid grid-cols-7 gap-0">
+        <div className="flex-1" style={{ display: 'grid', gridTemplateColumns: '10% 10% 10% 10% 10% 25% 25%', gap: 0 }}>
           <div className="px-4 py-2">
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">TOPIC</h3>
           </div>
