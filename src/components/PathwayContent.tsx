@@ -60,7 +60,7 @@ const PathwayContent: React.FC<PathwayContentProps> = ({
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">EXERCISE</h3>
           </div>
           <div className="px-4 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">FACULTY NOTES</h3>
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">EXERCISE NOTES</h3>
           </div>
         </div>
       </div>

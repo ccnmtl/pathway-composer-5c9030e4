@@ -293,13 +293,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           
           <div>
             <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              FACULTY NOTES
+              EXERCISE NOTES
             </Label>
             <Textarea
               id="facultyNotes"
               value={formData.facultyNotes}
               onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
-              placeholder="Enter faculty notes..."
+              placeholder="Enter exercise notes..."
               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
             />
           </div>
