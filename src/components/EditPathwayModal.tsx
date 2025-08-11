@@ -42,8 +42,9 @@ const getTopicOptions = (category: string) => {
 const getProficiencyOptions = (category: string) => {
   switch (category) {
     case "Rhythm":
-      return ["Beginner", "Intermediate", "Advanced", "Beginner + Intermediate", "Beginner + Advanced", "Intermediate + Advanced"];
+      return ["Beginner", "Intermediate", "Advanced"];
     case "Melody":
+      return ["Beginner", "Intermediate", "Advanced"];     
     case "Harmony":
       return ["Beginner", "Intermediate", "Advanced"];
     default:
@@ -54,10 +55,11 @@ const getProficiencyOptions = (category: string) => {
 const getEnsembleOptions = (category: string) => {
   switch (category) {
     case "Rhythm":
+      return ["Solo", "Duet", "Trio", "Quartet"];
     case "Melody":
       return ["Solo", "Duet", "Trio", "Quartet"];
     case "Harmony":
-      return ["Solo", "Duo"];
+      return ["Solo", "Duet", "Trio", "Quartet"];
     default:
       return [];
   }
@@ -68,9 +70,9 @@ const getActivityOptions = (category: string) => {
     case "Rhythm":
       return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
     case "Melody":
-      return ["Sing", "Play", "Movement"];
+      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
     case "Harmony":
-      return ["Sing", "Play"];
+      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
     default:
       return [];
   }
