@@ -81,16 +81,91 @@ const instructionOptions = [
   "Instructor-Led"
 ];
 
-const getExerciseOptions = (category: string) => {
+const getExerciseContent = (category: string, topic: string) => {
+  if (!topic) {
+    return "Select a topic first.";
+  }
+
   switch (category) {
     case "Rhythm":
-      return ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Donec at dignissim ligula. Ut placerat nulla vel tortor rutrum eleifend.", "Sed lacus odio, porta a mi ut, vehicula ornare arcu."];
+      switch (topic) {
+        case "Beat":
+          return [
+            "Beginner/Solo: Teacher performs a beat. Student performs the same beat.",
+            "Intermediate/Duo: One student performs same beat. Another student divides it into (2, 3, 4).",
+            "Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the \"subdivision.\" Change order of performances."
+          ];
+        case "Meter":
+          return [
+            "Beginner/Solo: Teacher performs beats in a time signature. One student performs the meter of those beats.",
+            "Intermediate/Duo: Teacher performs beats in a time signature. One student performs the meter of one measure, another student performs two measures of meter.",
+            "Advanced/Trio: Student performs beats in a time signature, another performs the meter, another performs the division of the beat",
+            "Advanced/Quartet: Student performs subdivision of a beat in a time signature. One student finds the meter, another student finds the beat, another student finds the division of the beat. Change order of performances."
+          ];
+        case "Syncopation":
+          return [
+            "Beginner/Solo: Teacher performs a syncopated pattern with a beat. One student performs the beat then the syncopated pattern.",
+            "Intermediate/Duo: One student performs a beat. Another student performs a syncopated pattern. Reverse the students. Out of tempo at first. Then in tempo. Then switching every four measures, then every two measures.",
+            "Advanced/Trio: One student performs a syncopated pattern. Another student performs the beat. Another student performs the meter."
+          ];
+        default:
+          return "Select a topic first.";
+      }
     case "Melody":
-      return ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Donec at dignissim ligula. Ut placerat nulla vel tortor rutrum eleifend.", "Sed lacus odio, porta a mi ut, vehicula ornare arcu."];
+      switch (topic) {
+        case "Scales":
+          return [
+            "Beginner/Solo: One student plays a scale in canon at the piano.",
+            "Intermediate/Duo: One student plays a scale in canon, another student sings the same scale in canon.",
+            "Advanced/Trio: One student plays a canon at the piano, two other students sing the same scale in canon.",
+            "Advanced/Quartet: One student plays a major and minor scale in canon. Could be done in two or three parts."
+          ];
+        case "Intervals":
+          return [
+            "Beginner/Solo: Student 1 plays an interval. Then sings it back.",
+            "Beginner/Duo: Student 1 plays an interval and Student 2 sings it back.",
+            "Intermediate/Trio: Student 1 plays an interval, Student 2 sings it back on \"lu\"and Student 3 writes it down on manuscript paper.",
+            "Advanced/Quartet: Student 1 plays an interval, a Student 2 sings it back on \"lu,\" Student 3 writes it down on manuscript paper, Student 4 writes it down transposed by a specific interval in bass, alto, tenor, soprano clef.",
+            "Advanced/Quartet: Student 1 plays an interval, Student 2 sings it back on \"lu,\" Student 3 writes it down on manuscript paper, Student 4 writes it down transposed by a specific interval in alto, tenor, soprano clef, and student 5 writes the interval down for a transposing instrument= key of F, Bb, Eb or A."
+          ];
+        case "Chromaticism":
+          return [
+            "Beginner/Solo: Teacher or student plays 2/3/4-note step-wise Melody: One student repeats that melody and changes one of the notes to an accidental – flat, sharp, or natural.",
+            "Intermediate/Duo: Two students sing a unison. One student holds the unison, the other student sings a 2/3/4 note step-wise melody above or below the unison held by the other student then changes one of the notes to a flat, sharp, or natural. Repeat switching parts.",
+            "Advanced/Trio: Two students sing a unison. Both students alter their note by a half step in contrary motion creating a simultaneous upper and lower neighbor tone. A third student identifies the interval. Gradually expand the use of intervals. Expand the use of intervals which are altered chromatically.",
+            "Advanced/Quartet: Teacher plays a two, three, or four – note melody. Teacher asks an advanced student to chromatically alter one of the notes Another student notates what is being played/sung Another student notates a transposiQon of the altered melody by a specific chromaQc interval: Tritone, Augmented fifth, minor seventh, for example and/or a transposing instrument."
+          ];
+        default:
+          return "Select a topic first.";
+      }
     case "Harmony":
-      return ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Donec at dignissim ligula. Ut placerat nulla vel tortor rutrum eleifend.", "Sed lacus odio, porta a mi ut, vehicula ornare arcu."];
+      switch (topic) {
+        case "Consonance and Disonance":
+          return [
+            "Beginner/Solo: Teacher plays two notes, consonant or a dissonant interval. Teacher asks one student to sing either the upper or the lower note of the pair.",
+            "Intermediate/Duo: Teacher plays a two-note interval, consonant or dissonant and asks two students to sing either the upper or lower note together. Then they switch.",
+            "Advanced/Trio: Teacher plays a three-note harmony and asks three students to sing one of the three notes one at a time asking them to idenQfy which are the consonant and which are the dissonant intervals.",
+            "Advanced/Quartet: Teacher plays two, three, or four chord combinations and asks four students to perform them back singing and/or playing an instrument. Other students in the class notate what is being played, other students identify the tonality of the harmonies played."
+          ];
+        case "Chord Positions":
+          return [
+            "Beginner/Solo: Teacher plays two chords: one in root position the other not in root position. One student identifies which is which including the chord quality.",
+            "Intermediate/Duo: Two students sing an arpeggio in canon. Change chord qualities: major, minor, diminished, augmented.",
+            "Advanced/Trio: One student sings a root position triad. Another student sings its first inversion. Another student sings it second inversion.",
+            "Advanced/Quartet: One student sings an inverted seventh chord. Each of the other three students sings that same seventh chord in the remaining positions."
+          ];
+        case "Enharmony":
+          return [
+            "Beginner/Solo: Teacher sings or plays a note. Student changes the name. Example: Bb becomes A#  - creating a new leading tone Student sings up a half-step. Example: Student sings A# and moves half-step up to B natural.",
+            "Intermediate/Duo: One student sings two whole-step notes. Example: Eb F The other student changes the note names. Example: D# E#.",
+            "Advanced/Trio: Same as b. but the third student sings a new scale built around the enharmonic respelling of the whole step which can be interpreted into more than one scale. Example: Eb F = scale degree 1 and 2 in Eb Major D# E# = scale degrees 6 and 7 in F# major.",
+            "Advanced/Quartet: Teacher plays two chord combinations that can be spelled two different ways. Using a diminished seventh chord is a good option. Four students sing one note at a time building up from the bottom -First chord one, then chord two. Other students in the class identify the two versions of the combination. Other students notate what is being performed."
+          ];
+        default:
+          return "Select a topic first.";
+      }
     default:
-      return [];
+      return "Select a topic first.";
   }
 };
 
@@ -240,11 +315,19 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               EXERCISE
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              <ul className="list-disc list-outside space-y-1 ml-4">
-                <li>Beginner/Solo: Teacher performs a beat. Student performs the same beat.</li>
-                <li>Intermediate/Duo: Duo: One student performs same beat. Another student divides it into (2, 3, 4)</li>
-                <li>Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the "subdivision." Change order of performances.</li>
-              </ul>
+              {(() => {
+                const content = getExerciseContent(category, formData.topic);
+                if (typeof content === 'string') {
+                  return <div>{content}</div>;
+                }
+                return (
+                  <ul className="list-disc list-outside space-y-1 ml-4">
+                    {content.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                );
+              })()}
             </div>
           </div>
           
