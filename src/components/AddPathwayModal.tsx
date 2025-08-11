@@ -207,14 +207,17 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       return;
     }
 
+    const exerciseContent = getExerciseContent(category, formData.topic);
+    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join(' ');
+    
     const newPathway: PathwayData = {
       id: Date.now().toString(),
       topic: formData.topic,
-      proficiency: '', // These will be display-only
-      ensemble: '',
-      activity: '',
-      instruction: '',
-      exercise: '',
+      proficiency: getProficiencyOptions(category).join(', '),
+      ensemble: getEnsembleOptions(category).join(', '),
+      activity: getActivityOptions(category).join(', '),
+      instruction: instructionOptions.join(', '),
+      exercise: exerciseText,
       facultyNotes: formData.facultyNotes
     };
     onSave(newPathway);
