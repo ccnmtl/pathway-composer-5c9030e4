@@ -90,8 +90,8 @@ const getExerciseContent = (category: string, topic: string) => {
       switch (topic) {
         case "Beat":
           return [
-            "Beginner/Solo: Teacher performs a beat. Student performs the same beat.",
-            "Intermediate/Duo: One student performs same beat. Another student divides it into (2, 3, 4).",
+            "<em>Beginner/Solo:</em> Teacher performs a beat. Student performs the same beat.<br />",
+            "<em>Intermediate/Duo:</em>  One student performs same beat. Another student divides it into (2, 3, 4).<br />",
             "Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the \"subdivision.\" Change order of performances."
           ];
         case "Meter":
