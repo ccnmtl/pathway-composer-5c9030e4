@@ -205,90 +205,47 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               PROFICIENCY
             </Label>
-            <Select value={formData.proficiency} onValueChange={(value) => setFormData(prev => ({ ...prev, proficiency: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select one." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {getProficiencyOptions(category).map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+              Beginner, Intermediate, Advanced
+            </div>
           </div>
           
           <div>
             <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ENSEMBLE
             </Label>
-            <Select value={formData.ensemble} onValueChange={(value) => setFormData(prev => ({ ...prev, ensemble: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select one." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {getEnsembleOptions(category).map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+              Solo, Duet, Trio, Quartet
+            </div>
           </div>
           
           <div>
             <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ACTIVITY
             </Label>
-            <Select value={formData.activity} onValueChange={(value) => setFormData(prev => ({ ...prev, activity: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select one." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {getActivityOptions(category).map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+              Compose, Improvise, Move, Notate, Play, Read, Sing
+            </div>
           </div>
           
           <div>
             <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               INSTRUCTION
             </Label>
-            <Select value={formData.instruction} onValueChange={(value) => setFormData(prev => ({ ...prev, instruction: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select one." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {instructionOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+              Instructor-led, Student Led
+            </div>
           </div>
           
           <div>
             <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               EXERCISE
             </Label>
-            <Select value={formData.exercise} onValueChange={(value) => setFormData(prev => ({ ...prev, exercise: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
-                <SelectValue placeholder="Select one." />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {getExerciseOptions(category).map((option, index) => (
-                  <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+              Beginner/Solo: Teacher performs a beat. Student performs the same beat.<br />
+              Intermediate/Duo: Duo: One student performs same beat. Another student divides it into (2, 3, 4)<br />
+              Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the 'subdivision.' Change order of performances.
+            </div>
           </div>
           
           <div>
