@@ -242,9 +242,11 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               EXERCISE
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Beginner/Solo: Teacher performs a beat. Student performs the same beat.<br />
-              Intermediate/Duo: Duo: One student performs same beat. Another student divides it into (2, 3, 4)<br />
-              Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the 'subdivision.' Change order of performances.
+              <ul className="list-disc list-inside space-y-1">
+                <li>Beginner/Solo: Teacher performs a beat. Student performs the same beat.</li>
+                <li>Intermediate/Duo: Duo: One student performs same beat. Another student divides it into (2, 3, 4)</li>
+                <li>Advanced/Trio: Student performs a beat. One student performs the beat, another performs the division, another finds the "subdivision." Change order of performances.</li>
+              </ul>
             </div>
           </div>
           
