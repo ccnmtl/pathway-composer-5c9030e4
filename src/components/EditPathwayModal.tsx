@@ -205,22 +205,17 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   }, [pathway]);
 
   const handleSave = () => {
-    // Check if all fields are selected
-    if (!formData.topic || !formData.proficiency || !formData.ensemble || !formData.activity || !formData.instruction || !formData.exercise) {
+    // Check if topic is selected
+    if (!formData.topic) {
       setShowError(true);
       setShowDuplicateError(false);
-      return; // Don't save if any field is empty
+      return; // Don't save if topic is not selected
     }
 
-    // Check for duplicates (excluding the current pathway being edited)
+    // Check for duplicates (only based on topic since other fields are display-only, excluding current pathway)
     const isDuplicate = existingPathways.some(existingPathway => 
       existingPathway.id !== pathway?.id &&
-      existingPathway.topic === formData.topic &&
-      existingPathway.proficiency === formData.proficiency &&
-      existingPathway.ensemble === formData.ensemble &&
-      existingPathway.activity === formData.activity &&
-      existingPathway.instruction === formData.instruction &&
-      existingPathway.exercise === formData.exercise
+      existingPathway.topic === formData.topic
     );
 
     if (isDuplicate) {
@@ -232,7 +227,8 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     if (pathway) {
       onSave({
         ...pathway,
-        ...formData
+        topic: formData.topic,
+        facultyNotes: formData.facultyNotes
       });
     }
     onClose();
@@ -347,13 +343,13 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         
         {showError && (
           <div className="text-red-500 text-sm mt-4">
-            Make sure all options have been selected.
+            Please select a topic.
           </div>
         )}
         
         {showDuplicateError && (
           <div className="text-red-500 text-sm mt-4">
-            This pathway already exists. Please select different options.
+            A pathway with this topic already exists. Please select a different topic.
           </div>
         )}
         

@@ -189,21 +189,16 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   const [showDuplicateError, setShowDuplicateError] = useState(false);
 
   const handleSave = () => {
-    // Check if all fields are selected
-    if (!formData.topic || !formData.proficiency || !formData.ensemble || !formData.activity || !formData.instruction || !formData.exercise) {
+    // Check if topic is selected
+    if (!formData.topic) {
       setShowError(true);
       setShowDuplicateError(false);
-      return; // Don't save if any field is empty
+      return; // Don't save if topic is not selected
     }
 
-    // Check for duplicates
+    // Check for duplicates (only based on topic since other fields are display-only)
     const isDuplicate = existingPathways.some(pathway => 
-      pathway.topic === formData.topic &&
-      pathway.proficiency === formData.proficiency &&
-      pathway.ensemble === formData.ensemble &&
-      pathway.activity === formData.activity &&
-      pathway.instruction === formData.instruction &&
-      pathway.exercise === formData.exercise
+      pathway.topic === formData.topic
     );
 
     if (isDuplicate) {
@@ -214,7 +209,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
 
     const newPathway: PathwayData = {
       id: Date.now().toString(),
-      ...formData
+      topic: formData.topic,
+      proficiency: '', // These will be display-only
+      ensemble: '',
+      activity: '',
+      instruction: '',
+      exercise: '',
+      facultyNotes: formData.facultyNotes
     };
     onSave(newPathway);
     onClose();
@@ -349,13 +350,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
         
         {showError && (
           <div className="text-red-500 text-sm mt-4">
-            Make sure all options have been selected.
+            Please select a topic.
           </div>
         )}
         
         {showDuplicateError && (
           <div className="text-red-500 text-sm mt-4">
-            This pathway already exists. Please select different options.
+            A pathway with this topic already exists. Please select a different topic.
           </div>
         )}
         
