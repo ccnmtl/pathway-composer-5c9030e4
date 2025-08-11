@@ -208,7 +208,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     }
 
     const exerciseContent = getExerciseContent(category, formData.topic);
-    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join(' ');
+    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
     
     const newPathway: PathwayData = {
       id: Date.now().toString(),

@@ -78,7 +78,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               
               {/* Exercise */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.exercise}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">{pathway.exercise}</p>
               </div>
               
               {/* Faculty Notes */}
@@ -187,7 +187,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               
               {/* Exercise */}
               <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.exercise}</p>
+                <p className="text-sm text-card-foreground break-words whitespace-pre-line">{pathway.exercise}</p>
               </div>
               
               {/* Faculty Notes */}

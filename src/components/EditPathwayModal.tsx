@@ -225,8 +225,8 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
 
     if (pathway) {
-      const exerciseContent = getExerciseContent(category, formData.topic);
-      const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join(' ');
+    const exerciseContent = getExerciseContent(category, formData.topic);
+    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
       
       onSave({
         ...pathway,
