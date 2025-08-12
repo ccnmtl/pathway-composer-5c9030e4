@@ -81,13 +81,18 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">
                   {pathway.exercise.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
-                      {line.split(/([^:]+:(?:\s|$))/g).map((part, partIndex) => 
-                        part.endsWith(': ') || (part.endsWith(':') && partIndex === line.split(/([^:]+:(?:\s|$))/g).length - 1) ? (
-                          <span key={partIndex} className="font-bold">{part}</span>
-                        ) : (
-                          <span key={partIndex}>{part}</span>
-                        )
-                      )}
+                      {(() => {
+                        const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
+                        if (firstColonMatch) {
+                          return (
+                            <>
+                              <span className="font-bold">{firstColonMatch[1]}</span>
+                              {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
+                            </>
+                          );
+                        }
+                        return <span>{line}</span>;
+                      })()}
                       {index < pathway.exercise.split('\n').length - 1 && <br />}
                     </React.Fragment>
                   ))}
@@ -203,13 +208,18 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words whitespace-pre-line">
                   {pathway.exercise.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
-                      {line.split(/([^:]+:(?:\s|$))/g).map((part, partIndex) => 
-                        part.endsWith(': ') || (part.endsWith(':') && partIndex === line.split(/([^:]+:(?:\s|$))/g).length - 1) ? (
-                          <span key={partIndex} className="font-bold">{part}</span>
-                        ) : (
-                          <span key={partIndex}>{part}</span>
-                        )
-                      )}
+                      {(() => {
+                        const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
+                        if (firstColonMatch) {
+                          return (
+                            <>
+                              <span className="font-bold">{firstColonMatch[1]}</span>
+                              {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
+                            </>
+                          );
+                        }
+                        return <span>{line}</span>;
+                      })()}
                       {index < pathway.exercise.split('\n').length - 1 && <br />}
                     </React.Fragment>
                   ))}
