@@ -81,8 +81,8 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">
                   {pathway.exercise.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
-                      {line.split(/(:.*?:)/g).map((part, partIndex) => 
-                        part.startsWith(':') && part.endsWith(':') && part.length > 2 ? (
+                      {line.split(/([^:]+:(?:\s|$))/g).map((part, partIndex) => 
+                        part.endsWith(': ') || (part.endsWith(':') && partIndex === line.split(/([^:]+:(?:\s|$))/g).length - 1) ? (
                           <span key={partIndex} className="font-bold">{part}</span>
                         ) : (
                           <span key={partIndex}>{part}</span>
@@ -203,8 +203,8 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 <p className="text-sm text-card-foreground break-words whitespace-pre-line">
                   {pathway.exercise.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
-                      {line.split(/(:.*?:)/g).map((part, partIndex) => 
-                        part.startsWith(':') && part.endsWith(':') && part.length > 2 ? (
+                      {line.split(/([^:]+:(?:\s|$))/g).map((part, partIndex) => 
+                        part.endsWith(': ') || (part.endsWith(':') && partIndex === line.split(/([^:]+:(?:\s|$))/g).length - 1) ? (
                           <span key={partIndex} className="font-bold">{part}</span>
                         ) : (
                           <span key={partIndex}>{part}</span>
