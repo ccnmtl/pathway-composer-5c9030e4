@@ -78,7 +78,20 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               
               {/* Exercise */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">{pathway.exercise}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">
+                  {pathway.exercise.split('\n').map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line.split(/(:.*?:)/g).map((part, partIndex) => 
+                        part.startsWith(':') && part.endsWith(':') && part.length > 2 ? (
+                          <span key={partIndex} className="font-bold">{part}</span>
+                        ) : (
+                          <span key={partIndex}>{part}</span>
+                        )
+                      )}
+                      {index < pathway.exercise.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </p>
               </div>
               
               {/* Faculty Notes */}
@@ -187,7 +200,20 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               
               {/* Exercise */}
               <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words whitespace-pre-line">{pathway.exercise}</p>
+                <p className="text-sm text-card-foreground break-words whitespace-pre-line">
+                  {pathway.exercise.split('\n').map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line.split(/(:.*?:)/g).map((part, partIndex) => 
+                        part.startsWith(':') && part.endsWith(':') && part.length > 2 ? (
+                          <span key={partIndex} className="font-bold">{part}</span>
+                        ) : (
+                          <span key={partIndex}>{part}</span>
+                        )
+                      )}
+                      {index < pathway.exercise.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </p>
               </div>
               
               {/* Faculty Notes */}
