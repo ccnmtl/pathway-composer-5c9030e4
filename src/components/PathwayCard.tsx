@@ -53,7 +53,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div className="p-4 space-y-4">
               {/* Topic */}
               <div>
-                <p className="text-sm text-card-foreground break-words leading-relaxed">{pathway.topic}</p>
+                <p className="text-sm text-card-foreground break-words leading-relaxed font-bold">{pathway.topic}</p>
               </div>
               
               {/* Proficiency */}
@@ -162,7 +162,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
             <div style={{ display: 'grid', gridTemplateColumns: '10% 10% 10% 10% 10% 25% 25%', gap: 0 }}>
               {/* Topic */}
               <div className="p-4 border-r border-border">
-                <p className="text-sm text-card-foreground break-words">{pathway.topic}</p>
+                <p className="text-sm text-card-foreground break-words font-bold">{pathway.topic}</p>
               </div>
               
               {/* Proficiency */}
