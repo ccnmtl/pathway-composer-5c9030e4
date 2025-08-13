@@ -9,8 +9,6 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import logoLight from '@/assets/logo-light.png';
-import logoDark from '@/assets/logo-dark.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -29,11 +27,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
 
   return (
     <div className="flex items-center justify-between mb-8">
-      <img 
-        src={isDarkMode ? logoDark : logoLight} 
-        alt="RMH: The Multilevel Musicianship Curriculum at Columbia University" 
-        className="h-8 md:h-12 w-auto"
-      />
+      <h1 className="text-lg md:text-2xl font-bold text-foreground tracking-wide">RMH: The Multilevel Musicianship Curriculum at Columbia University</h1>
       
       {/* Desktop/Tablet Navigation */}
       <div className="hidden md:flex items-center gap-4">
