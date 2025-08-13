@@ -70,7 +70,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
         
         <Button
           onClick={onAddPath}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 w-full"
+          className="bg-[hsl(var(--add-path-button))] hover:bg-[hsl(var(--add-path-button))]/90 text-[hsl(var(--add-path-button-foreground))] px-4 py-3 w-full"
         >
           Add a Path
         </Button>
@@ -109,7 +109,7 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
         
         <Button
           onClick={onAddPath}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2"
+          className="bg-[hsl(var(--add-path-button))] hover:bg-[hsl(var(--add-path-button))]/90 text-[hsl(var(--add-path-button-foreground))] px-4 py-2"
         >
           Add a Path
         </Button>
