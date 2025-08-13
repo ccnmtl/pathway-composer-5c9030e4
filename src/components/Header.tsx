@@ -10,6 +10,10 @@ import {
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
+// Import your logo images here
+// import rmhLogo from '@/assets/rmh-logo.png';
+// import rmhLogoFull from '@/assets/rmh-logo-full.png';
+
 interface HeaderProps {
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
@@ -27,7 +31,20 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
 
   return (
     <div className="flex items-center justify-between mb-8">
-      <h1 className="text-lg md:text-2xl font-bold text-foreground tracking-wide">RMH: The Multilevel Musicianship Curriculum at Columbia University</h1>
+      <div className="flex items-center">
+        {/* Mobile: Show short RMH logo */}
+        <img 
+          src="/placeholder.svg" 
+          alt="RMH Logo" 
+          className="h-8 md:hidden"
+        />
+        {/* Desktop: Show full logo with text */}
+        <img 
+          src="/placeholder.svg" 
+          alt="RMH: The Multilevel Musicianship Curriculum at Columbia University" 
+          className="hidden md:block h-12"
+        />
+      </div>
       
       {/* Desktop/Tablet Navigation */}
       <div className="hidden md:flex items-center gap-4">
