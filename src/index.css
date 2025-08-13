@@ -55,6 +55,11 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Tab colors */
+    --tab-rhythm: 202 100% 39%;     /* #0077c8 */
+    --tab-melody: 69 50% 31%;       /* #76881d */
+    --tab-harmony: 33 100% 50%;     /* #ff9800 */
   }
 
   .dark {
@@ -95,6 +100,11 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     --warning: 45 93% 47%;
+
+    /* Tab colors (same for dark mode) */
+    --tab-rhythm: 202 100% 39%;     /* #0077c8 */
+    --tab-melody: 69 50% 31%;       /* #76881d */
+    --tab-harmony: 33 100% 50%;     /* #ff9800 */
   }
 }
 
