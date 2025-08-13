@@ -61,6 +61,7 @@ const PathwayList: React.FC<PathwayListProps> = ({
                   >
                     <PathwayCard
                       pathway={pathway}
+                      category={category}
                       onEdit={onEdit}
                       onCopy={onCopy}
                       onDelete={onDelete}

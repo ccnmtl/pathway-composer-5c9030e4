@@ -60,6 +60,11 @@ All colors MUST be HSL.
     --tab-rhythm: 202 100% 39%;     /* #0077c8 */
     --tab-melody: 69 50% 31%;       /* #76881d */
     --tab-harmony: 33 100% 50%;     /* #ff9800 */
+    
+    /* Tab colors with opacity for row backgrounds */
+    --tab-rhythm-bg: 202 100% 39% / 0.2;     /* #0077c8 with 20% opacity */
+    --tab-melody-bg: 69 50% 31% / 0.2;       /* #76881d with 20% opacity */
+    --tab-harmony-bg: 33 100% 50% / 0.2;     /* #ff9800 with 20% opacity */
   }
 
   .dark {
@@ -105,6 +110,11 @@ All colors MUST be HSL.
     --tab-rhythm: 202 100% 39%;     /* #0077c8 */
     --tab-melody: 69 50% 31%;       /* #76881d */
     --tab-harmony: 33 100% 50%;     /* #ff9800 */
+    
+    /* Tab colors with opacity for row backgrounds */
+    --tab-rhythm-bg: 202 100% 39% / 0.2;     /* #0077c8 with 20% opacity */
+    --tab-melody-bg: 69 50% 31% / 0.2;       /* #76881d with 20% opacity */
+    --tab-harmony-bg: 33 100% 50% / 0.2;     /* #ff9800 with 20% opacity */
   }
 }
 

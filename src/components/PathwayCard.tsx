@@ -32,9 +32,10 @@ interface PathwayCardProps {
   onCopy: (pathway: PathwayData) => void;
   onDelete: (id: string) => void;
   dragHandleProps?: any;
+  category: string;
 }
 
-const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDelete, dragHandleProps }) => {
+const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDelete, dragHandleProps, category }) => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
   const handleDeleteConfirm = () => {
@@ -42,8 +43,21 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
     setShowDeleteAlert(false);
   };
 
+  const getCategoryBackgroundClass = () => {
+    switch (category) {
+      case 'rhythm':
+        return 'bg-[hsl(var(--tab-rhythm-bg))]';
+      case 'melody':
+        return 'bg-[hsl(var(--tab-melody-bg))]';
+      case 'harmony':
+        return 'bg-[hsl(var(--tab-harmony-bg))]';
+      default:
+        return 'bg-card';
+    }
+  };
+
   return (
-    <Card className="border border-border bg-card shadow-sm hover:border-warning transition-colors duration-200">
+    <Card className={`border border-border ${getCategoryBackgroundClass()} shadow-sm hover:border-warning transition-colors duration-200`}>
       <CardContent className="p-0">
         {/* Mobile Layout - Grippy on Right spanning full height */}
         <div className="flex md:hidden">
