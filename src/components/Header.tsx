@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
-// Import your logo images here
+// Import your logo images here (uncomment once you add the files)
 // import logoDark from '@/assets/logo-dark.png';
 // import logoLight from '@/assets/logo-light.png';
 
@@ -37,8 +37,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
           alt="RMH: The Multilevel Musicianship Curriculum at Columbia University" 
           className="h-8 md:h-12"
         />
-        {/* Once you add your logos, replace the src with:
-            src={isDarkMode ? "/src/assets/logo-dark.png" : "/src/assets/logo-light.png"}
+        {/* Once you add your logos to src/assets/, uncomment the imports above and replace src with:
+            src={isDarkMode ? logoDark : logoLight}
         */}
       </div>
       
