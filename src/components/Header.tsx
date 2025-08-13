@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
 
   return (
     <div className="flex items-center justify-between mb-8">
-      <h1 className="text-2xl font-bold text-foreground tracking-wide">Pathway Composer</h1>
+      <h1 className="text-lg md:text-2xl font-bold text-foreground tracking-wide">RMH: The Multilevel Musicianship Curriculum at Columbia University</h1>
       
       {/* Desktop/Tablet Navigation */}
       <div className="hidden md:flex items-center gap-4">
