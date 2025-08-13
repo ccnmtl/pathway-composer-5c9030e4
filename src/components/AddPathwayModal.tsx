@@ -375,7 +375,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </Button>
           <Button
             onClick={handleSave}
-            className="px-6 bg-blue-600 hover:bg-blue-700"
+            className="px-6 bg-[hsl(var(--add-path-button))] hover:bg-[hsl(var(--add-path-button))]/90 text-[hsl(var(--add-path-button-foreground))]"
           >
             Add
           </Button>
