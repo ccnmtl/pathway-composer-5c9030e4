@@ -11,8 +11,8 @@ import {
 import { Menu } from 'lucide-react';
 
 // Import your logo images here
-// import rmhLogo from '@/assets/rmh-logo.png';
-// import rmhLogoFull from '@/assets/rmh-logo-full.png';
+// import logoDark from '@/assets/logo-dark.png';
+// import logoLight from '@/assets/logo-light.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -32,18 +32,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode, onAboutCl
   return (
     <div className="flex items-center justify-between mb-8">
       <div className="flex items-center">
-        {/* Mobile: Show short RMH logo */}
-        <img 
-          src="/placeholder.svg" 
-          alt="RMH Logo" 
-          className="h-8 md:hidden"
-        />
-        {/* Desktop: Show full logo with text */}
         <img 
           src="/placeholder.svg" 
           alt="RMH: The Multilevel Musicianship Curriculum at Columbia University" 
-          className="hidden md:block h-12"
+          className="h-8 md:h-12"
         />
+        {/* Once you add your logos, replace the src with:
+            src={isDarkMode ? "/src/assets/logo-dark.png" : "/src/assets/logo-light.png"}
+        */}
       </div>
       
       {/* Desktop/Tablet Navigation */}
