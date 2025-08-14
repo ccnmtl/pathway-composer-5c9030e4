@@ -369,21 +369,22 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                   const isChecked = formData.proficiency.split(', ').includes(option);
                   return (
                     <div key={option} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`proficiency-${option}`}
-                        checked={isChecked}
-                        onCheckedChange={(checked) => {
-                          const currentOptions = formData.proficiency.split(', ').filter(o => o);
-                          if (checked) {
-                            const newOptions = [...currentOptions, option];
-                            setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
-                          } else {
-                            const newOptions = currentOptions.filter(o => o !== option);
-                            setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
-                          }
-                        }}
-                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
-                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
+                       <Checkbox
+                         id={`proficiency-${option}`}
+                         checked={isChecked}
+                         disabled={!formData.topic}
+                         onCheckedChange={(checked) => {
+                           const currentOptions = formData.proficiency.split(', ').filter(o => o);
+                           if (checked) {
+                             const newOptions = [...currentOptions, option];
+                             setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                           } else {
+                             const newOptions = currentOptions.filter(o => o !== option);
+                             setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                           }
+                         }}
+                         className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                         style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -403,21 +404,22 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                   const isChecked = formData.ensemble.split(', ').includes(option);
                   return (
                     <div key={option} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`ensemble-${option}`}
-                        checked={isChecked}
-                        onCheckedChange={(checked) => {
-                          const currentOptions = formData.ensemble.split(', ').filter(o => o);
-                          if (checked) {
-                            const newOptions = [...currentOptions, option];
-                            setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
-                          } else {
-                            const newOptions = currentOptions.filter(o => o !== option);
-                            setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
-                          }
-                        }}
-                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
-                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
+                       <Checkbox
+                         id={`ensemble-${option}`}
+                         checked={isChecked}
+                         disabled={!formData.topic}
+                         onCheckedChange={(checked) => {
+                           const currentOptions = formData.ensemble.split(', ').filter(o => o);
+                           if (checked) {
+                             const newOptions = [...currentOptions, option];
+                             setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
+                           } else {
+                             const newOptions = currentOptions.filter(o => o !== option);
+                             setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
+                           }
+                         }}
+                         className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                         style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -437,21 +439,22 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                   const isChecked = formData.activity.split(', ').includes(option);
                   return (
                     <div key={option} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`activity-${option}`}
-                        checked={isChecked}
-                        onCheckedChange={(checked) => {
-                          const currentOptions = formData.activity.split(', ').filter(o => o);
-                          if (checked) {
-                            const newOptions = [...currentOptions, option];
-                            setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
-                          } else {
-                            const newOptions = currentOptions.filter(o => o !== option);
-                            setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
-                          }
-                        }}
-                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
-                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
+                       <Checkbox
+                         id={`activity-${option}`}
+                         checked={isChecked}
+                         disabled={!formData.topic}
+                         onCheckedChange={(checked) => {
+                           const currentOptions = formData.activity.split(', ').filter(o => o);
+                           if (checked) {
+                             const newOptions = [...currentOptions, option];
+                             setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
+                           } else {
+                             const newOptions = currentOptions.filter(o => o !== option);
+                             setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
+                           }
+                         }}
+                         className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                         style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -471,21 +474,22 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                   const isChecked = formData.instruction.split(', ').includes(option);
                   return (
                     <div key={option} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`instruction-${option}`}
-                        checked={isChecked}
-                        onCheckedChange={(checked) => {
-                          const currentOptions = formData.instruction.split(', ').filter(o => o);
-                          if (checked) {
-                            const newOptions = [...currentOptions, option];
-                            setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
-                          } else {
-                            const newOptions = currentOptions.filter(o => o !== option);
-                            setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
-                          }
-                        }}
-                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
-                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
+                       <Checkbox
+                         id={`instruction-${option}`}
+                         checked={isChecked}
+                         disabled={!formData.topic}
+                         onCheckedChange={(checked) => {
+                           const currentOptions = formData.instruction.split(', ').filter(o => o);
+                           if (checked) {
+                             const newOptions = [...currentOptions, option];
+                             setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
+                           } else {
+                             const newOptions = currentOptions.filter(o => o !== option);
+                             setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
+                           }
+                         }}
+                         className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                         style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -514,13 +518,14 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
              <Label htmlFor="facultyNotes" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
                FACULTY NOTES
              </Label>
-            <Textarea
-              id="facultyNotes"
-              value={formData.facultyNotes}
-              onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
-              placeholder="Enter exercise notes..."
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-            />
+             <Textarea
+               id="facultyNotes"
+               value={formData.facultyNotes}
+               onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
+               placeholder={formData.topic ? "Enter exercise notes..." : "Select a topic first."}
+               disabled={!formData.topic}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
           </div>
         </div>
         
