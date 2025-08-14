@@ -302,7 +302,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                TOPIC
              </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]">
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
                 <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -323,7 +323,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="proficiency"
               value={formData.proficiency}
               onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
           
@@ -335,7 +335,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="ensemble"
               value={formData.ensemble}
               onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
           
@@ -347,7 +347,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="activity"
               value={formData.activity}
               onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
           
@@ -359,7 +359,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="instruction"
               value={formData.instruction}
               onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
           
@@ -373,7 +373,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               onChange={(e) => setFormData(prev => ({ ...prev, exercise: e.target.value }))}
               placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
               disabled={!formData.topic}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))]"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
           
@@ -386,7 +386,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               value={formData.facultyNotes}
               onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
               placeholder="Enter exercise notes..."
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
         </div>

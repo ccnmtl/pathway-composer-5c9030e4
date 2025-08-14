@@ -280,7 +280,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                TOPIC
              </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]">
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
                 <SelectValue placeholder="Select a topic approach..." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -359,7 +359,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               value={formData.facultyNotes}
               onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
               placeholder="Enter exercise notes..."
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
             />
           </div>
         </div>

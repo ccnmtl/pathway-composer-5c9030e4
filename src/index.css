@@ -82,6 +82,9 @@ All colors MUST be HSL.
     /* Modal button colors */
     --modal-cancel-bg: 0 0% 20%;             /* #333333 */
     --modal-action-bg: 0 0% 100%;            /* #ffffff */
+    
+    /* Modal input text color */
+    --modal-input-text: 0 0% 0%;             /* black text */
   }
 
   .dark {
@@ -149,6 +152,9 @@ All colors MUST be HSL.
     /* Modal button colors - same for dark mode */
     --modal-cancel-bg: 0 0% 20%;             /* #333333 */
     --modal-action-bg: 0 0% 100%;            /* #ffffff */
+    
+    /* Modal input text color - same for dark mode */
+    --modal-input-text: 0 0% 0%;             /* black text */
   }
 }
 
