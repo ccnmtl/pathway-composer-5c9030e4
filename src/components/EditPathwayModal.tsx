@@ -192,6 +192,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
 
   const [showError, setShowError] = useState(false);
   const [isExerciseManuallyEdited, setIsExerciseManuallyEdited] = useState(false);
+  const [exerciseContentByTopic, setExerciseContentByTopic] = useState<Record<string, string>>({});
 
   useEffect(() => {
     if (pathway) {
@@ -205,17 +206,33 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         facultyNotes: pathway.facultyNotes || ''
       });
       setIsExerciseManuallyEdited(false);
+      setExerciseContentByTopic({});
     }
   }, [pathway]);
 
-  // Update exercise content when topic changes (only if not manually edited)
-  useEffect(() => {
-    if (formData.topic && !isExerciseManuallyEdited) {
-      const exerciseContent = getExerciseContent(category, formData.topic);
+  // Save current exercise content when topic changes
+  const handleTopicChange = (newTopic: string) => {
+    // Save current exercise content for the previous topic
+    if (formData.topic && formData.exercise) {
+      setExerciseContentByTopic(prev => ({
+        ...prev,
+        [formData.topic]: formData.exercise
+      }));
+    }
+
+    // Update form data with new topic
+    setFormData(prev => ({ ...prev, topic: newTopic }));
+
+    // Load saved content for new topic or default content
+    const savedContent = exerciseContentByTopic[newTopic];
+    if (savedContent) {
+      setFormData(prev => ({ ...prev, exercise: savedContent }));
+    } else {
+      const exerciseContent = getExerciseContent(category, newTopic);
       const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
       setFormData(prev => ({ ...prev, exercise: exerciseText }));
     }
-  }, [formData.topic, category, isExerciseManuallyEdited]);
+  };
 
   const handleSave = () => {
     // Check if topic is selected
@@ -272,7 +289,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
              <Label htmlFor="topic" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
                TOPIC
              </Label>
-            <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
+            <Select value={formData.topic} onValueChange={handleTopicChange}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
                 <SelectValue placeholder="Select a topic approach..." />
               </SelectTrigger>
