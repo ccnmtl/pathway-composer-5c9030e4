@@ -75,6 +75,9 @@ All colors MUST be HSL.
     --modal-melody-bg: 69 50% 31%;           /* #76881d */
     --modal-harmony-bg: 33 100% 50%;         /* #ff9800 */
     --modal-input-bg: 0 0% 100%;             /* #ffffff for inputs */
+    
+    /* Card hover border colors */
+    --card-hover-border: 0 0% 0%;            /* black for light mode */
   }
 
   .dark {
@@ -135,6 +138,9 @@ All colors MUST be HSL.
     --modal-melody-bg: 69 50% 31%;           /* #76881d */
     --modal-harmony-bg: 33 100% 50%;         /* #ff9800 */
     --modal-input-bg: 0 0% 100%;             /* #ffffff for inputs */
+    
+    /* Card hover border colors */
+    --card-hover-border: 0 0% 100%;          /* white for dark mode */
   }
 }
 

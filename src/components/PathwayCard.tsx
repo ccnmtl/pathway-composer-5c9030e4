@@ -57,7 +57,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
   };
 
   return (
-    <Card className={`border border-border ${getCategoryBackgroundClass()} shadow-sm hover:border-warning transition-colors duration-200`}>
+    <Card className={`border border-border ${getCategoryBackgroundClass()} shadow-sm hover:border-[hsl(var(--card-hover-border))] transition-colors duration-200`}>
       <CardContent className="p-0">
         {/* Mobile Layout - Grippy on Right spanning full height */}
         <div className="flex md:hidden">
