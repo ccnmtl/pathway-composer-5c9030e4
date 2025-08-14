@@ -268,17 +268,17 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className={`max-w-2xl max-h-[80vh] overflow-y-auto ${getModalBgClass(category)}`}>
-        <DialogHeader>
-          <DialogTitle className="text-lg font-medium">
-            {category} / Edit Pathway
-          </DialogTitle>
-        </DialogHeader>
+         <DialogHeader>
+           <DialogTitle className="text-lg font-medium text-white">
+             {category} / Edit Pathway
+           </DialogTitle>
+         </DialogHeader>
         
         <div className="space-y-6 py-4">
           <div>
-            <Label htmlFor="topic" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              TOPIC
-            </Label>
+             <Label htmlFor="topic" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               TOPIC
+             </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]">
                 <SelectValue placeholder="Select a topic approach..." />
@@ -294,45 +294,45 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              PROFICIENCY
-            </Label>
+             <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               PROFICIENCY
+             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               Beginner, Intermediate, Advanced
             </div>
           </div>
           
           <div>
-            <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ENSEMBLE
-            </Label>
+             <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               ENSEMBLE
+             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               Solo, Duet, Trio, Quartet
             </div>
           </div>
           
           <div>
-            <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ACTIVITY
-            </Label>
+             <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               ACTIVITY
+             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               Compose, Improvise, Move, Notate, Play, Read, Sing
             </div>
           </div>
           
           <div>
-            <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              INSTRUCTION
-            </Label>
+             <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               INSTRUCTION
+             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               Instructor-led, Student Led
             </div>
           </div>
           
           <div>
-            <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              EXERCISE MODELS
-            </Label>
+             <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               EXERCISE MODELS
+             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               {(() => {
                 const content = getExerciseContent(category, formData.topic);
@@ -351,9 +351,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              FACULTY NOTES
-            </Label>
+             <Label htmlFor="facultyNotes" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               FACULTY NOTES
+             </Label>
             <Textarea
               id="facultyNotes"
               value={formData.facultyNotes}

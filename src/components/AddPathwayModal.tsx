@@ -290,17 +290,17 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className={`max-w-2xl max-h-[80vh] overflow-y-auto ${getModalBgClass(category)}`}>
-        <DialogHeader>
-          <DialogTitle className="text-lg font-medium">
-            {category} / Add New Pathway
-          </DialogTitle>
-        </DialogHeader>
+         <DialogHeader>
+           <DialogTitle className="text-lg font-medium text-white">
+             {category} / Add New Pathway
+           </DialogTitle>
+         </DialogHeader>
         
         <div className="space-y-6 py-4">
           <div>
-            <Label htmlFor="topic" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              TOPIC
-            </Label>
+             <Label htmlFor="topic" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               TOPIC
+             </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]">
                 <SelectValue placeholder="Select one." />
@@ -316,9 +316,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              PROFICIENCY
-            </Label>
+             <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               PROFICIENCY
+             </Label>
             <Input
               id="proficiency"
               value={formData.proficiency}
@@ -328,9 +328,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ENSEMBLE
-            </Label>
+             <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               ENSEMBLE
+             </Label>
             <Input
               id="ensemble"
               value={formData.ensemble}
@@ -340,9 +340,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              ACTIVITY
-            </Label>
+             <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               ACTIVITY
+             </Label>
             <Input
               id="activity"
               value={formData.activity}
@@ -352,9 +352,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              INSTRUCTION
-            </Label>
+             <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               INSTRUCTION
+             </Label>
             <Input
               id="instruction"
               value={formData.instruction}
@@ -364,9 +364,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              EXERCISE MODELS
-            </Label>
+             <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               EXERCISE MODELS
+             </Label>
             <Textarea
               id="exercise"
               value={formData.exercise}
@@ -378,9 +378,9 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              FACULTY NOTES
-            </Label>
+             <Label htmlFor="facultyNotes" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+               FACULTY NOTES
+             </Label>
             <Textarea
               id="facultyNotes"
               value={formData.facultyNotes}
