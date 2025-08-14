@@ -6,8 +6,6 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import { RotateCcw, X } from 'lucide-react';
 
 interface PathwayData {
   id: string;
@@ -196,45 +194,6 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   const [isExerciseManuallyEdited, setIsExerciseManuallyEdited] = useState(false);
   const [exerciseContentByTopic, setExerciseContentByTopic] = useState<Record<string, string>>({});
 
-  // Function to get default values for a field based on category
-  const getDefaultValue = (field: string) => {
-    switch (field) {
-      case 'proficiency':
-        return getProficiencyOptions(category)[0] || '';
-      case 'ensemble':
-        return getEnsembleOptions(category)[0] || '';
-      case 'activity':
-        return getActivityOptions(category)[0] || '';
-      case 'instruction':
-        return instructionOptions[0] || '';
-      default:
-        return '';
-    }
-  };
-
-  // Function to convert comma-separated string to array
-  const stringToArray = (str: string): string[] => {
-    return str ? str.split(',').map(s => s.trim()).filter(s => s.length > 0) : [];
-  };
-
-  // Function to convert array to comma-separated string
-  const arrayToString = (arr: string[]): string => {
-    return arr.join(', ');
-  };
-
-  // Function to remove a badge value
-  const removeBadgeValue = (field: string, valueToRemove: string) => {
-    const currentValues = stringToArray(formData[field as keyof typeof formData] as string);
-    const newValues = currentValues.filter(value => value !== valueToRemove);
-    setFormData(prev => ({ ...prev, [field]: arrayToString(newValues) }));
-  };
-
-  // Function to reset field to default
-  const resetFieldToDefault = (field: string) => {
-    const defaultValue = getDefaultValue(field);
-    setFormData(prev => ({ ...prev, [field]: defaultValue }));
-  };
-
   useEffect(() => {
     if (pathway) {
       setFormData({
@@ -345,191 +304,51 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider">
-                  PROFICIENCY
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => resetFieldToDefault('proficiency')}
-                  className="h-6 w-6 p-0 text-white hover:text-white hover:bg-white/20"
-                >
-                  <RotateCcw size={12} />
-                </Button>
-              </div>
-             <Select value={formData.proficiency} onValueChange={(value) => setFormData(prev => ({ ...prev, proficiency: value }))}>
-               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
-                 <SelectValue placeholder="Select proficiency..." />
-               </SelectTrigger>
-               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                 {getProficiencyOptions(category).map((option, index) => (
-                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                     {option}
-                   </SelectItem>
-                 ))}
-               </SelectContent>
-             </Select>
-             {formData.proficiency && (
-               <div className="flex flex-wrap gap-2 mt-2">
-                 {stringToArray(formData.proficiency).map((value, index) => (
-                   <Badge key={index} className="bg-black text-white border border-white hover:bg-black/80">
-                     {value}
-                     <Button
-                       type="button"
-                       variant="ghost"
-                       size="sm"
-                       onClick={() => removeBadgeValue('proficiency', value)}
-                       className="ml-1 h-4 w-4 p-0 hover:bg-white/20 text-white"
-                     >
-                       <X size={10} />
-                     </Button>
-                   </Badge>
-                 ))}
-               </div>
-             )}
+              <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                PROFICIENCY
+              </Label>
+             <Input
+               id="proficiency"
+               value={formData.proficiency}
+               onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider">
-                  ENSEMBLE
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => resetFieldToDefault('ensemble')}
-                  className="h-6 w-6 p-0 text-white hover:text-white hover:bg-white/20"
-                >
-                  <RotateCcw size={12} />
-                </Button>
-              </div>
-             <Select value={formData.ensemble} onValueChange={(value) => setFormData(prev => ({ ...prev, ensemble: value }))}>
-               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
-                 <SelectValue placeholder="Select ensemble..." />
-               </SelectTrigger>
-               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                 {getEnsembleOptions(category).map((option, index) => (
-                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                     {option}
-                   </SelectItem>
-                 ))}
-               </SelectContent>
-             </Select>
-             {formData.ensemble && (
-               <div className="flex flex-wrap gap-2 mt-2">
-                 {stringToArray(formData.ensemble).map((value, index) => (
-                   <Badge key={index} className="bg-black text-white border border-white hover:bg-black/80">
-                     {value}
-                     <Button
-                       type="button"
-                       variant="ghost"
-                       size="sm"
-                       onClick={() => removeBadgeValue('ensemble', value)}
-                       className="ml-1 h-4 w-4 p-0 hover:bg-white/20 text-white"
-                     >
-                       <X size={10} />
-                     </Button>
-                   </Badge>
-                 ))}
-               </div>
-             )}
+              <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ENSEMBLE
+              </Label>
+             <Input
+               id="ensemble"
+               value={formData.ensemble}
+               onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider">
-                  ACTIVITY
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => resetFieldToDefault('activity')}
-                  className="h-6 w-6 p-0 text-white hover:text-white hover:bg-white/20"
-                >
-                  <RotateCcw size={12} />
-                </Button>
-              </div>
-             <Select value={formData.activity} onValueChange={(value) => setFormData(prev => ({ ...prev, activity: value }))}>
-               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
-                 <SelectValue placeholder="Select activity..." />
-               </SelectTrigger>
-               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                 {getActivityOptions(category).map((option, index) => (
-                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                     {option}
-                   </SelectItem>
-                 ))}
-               </SelectContent>
-             </Select>
-             {formData.activity && (
-               <div className="flex flex-wrap gap-2 mt-2">
-                 {stringToArray(formData.activity).map((value, index) => (
-                   <Badge key={index} className="bg-black text-white border border-white hover:bg-black/80">
-                     {value}
-                     <Button
-                       type="button"
-                       variant="ghost"
-                       size="sm"
-                       onClick={() => removeBadgeValue('activity', value)}
-                       className="ml-1 h-4 w-4 p-0 hover:bg-white/20 text-white"
-                     >
-                       <X size={10} />
-                     </Button>
-                   </Badge>
-                 ))}
-               </div>
-             )}
+              <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ACTIVITY
+              </Label>
+             <Input
+               id="activity"
+               value={formData.activity}
+               onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider">
-                  INSTRUCTION
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => resetFieldToDefault('instruction')}
-                  className="h-6 w-6 p-0 text-white hover:text-white hover:bg-white/20"
-                >
-                  <RotateCcw size={12} />
-                </Button>
-              </div>
-             <Select value={formData.instruction} onValueChange={(value) => setFormData(prev => ({ ...prev, instruction: value }))}>
-               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
-                 <SelectValue placeholder="Select instruction..." />
-               </SelectTrigger>
-               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                 {instructionOptions.map((option, index) => (
-                   <SelectItem key={index} value={option} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                     {option}
-                   </SelectItem>
-                 ))}
-               </SelectContent>
-             </Select>
-             {formData.instruction && (
-               <div className="flex flex-wrap gap-2 mt-2">
-                 {stringToArray(formData.instruction).map((value, index) => (
-                   <Badge key={index} className="bg-black text-white border border-white hover:bg-black/80">
-                     {value}
-                     <Button
-                       type="button"
-                       variant="ghost"
-                       size="sm"
-                       onClick={() => removeBadgeValue('instruction', value)}
-                       className="ml-1 h-4 w-4 p-0 hover:bg-white/20 text-white"
-                     >
-                       <X size={10} />
-                     </Button>
-                   </Badge>
-                 ))}
-               </div>
-             )}
+              <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                INSTRUCTION
+              </Label>
+             <Input
+               id="instruction"
+               value={formData.instruction}
+               onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
            </div>
           
            <div>
