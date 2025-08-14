@@ -202,6 +202,17 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     }));
   }, [category]);
 
+  // Pre-populate exercise content when topic changes
+  useEffect(() => {
+    if (formData.topic) {
+      const exerciseContent = getExerciseContent(category, formData.topic);
+      const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
+      setFormData(prev => ({ ...prev, exercise: exerciseText }));
+    } else {
+      setFormData(prev => ({ ...prev, exercise: '' }));
+    }
+  }, [formData.topic, category]);
+
   const handleSave = () => {
     // Check if topic is selected
     if (!formData.topic) {
@@ -221,9 +232,6 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       return;
     }
 
-    const exerciseContent = getExerciseContent(category, formData.topic);
-    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
-    
     const newPathway: PathwayData = {
       id: Date.now().toString(),
       topic: formData.topic,
@@ -231,7 +239,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       ensemble: formData.ensemble,
       activity: formData.activity,
       instruction: formData.instruction,
-      exercise: exerciseText,
+      exercise: formData.exercise,
       facultyNotes: formData.facultyNotes
     };
     onSave(newPathway);
@@ -346,21 +354,14 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               EXERCISE MODELS
             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              {(() => {
-                const content = getExerciseContent(category, formData.topic);
-                if (typeof content === 'string') {
-                  return <div>{content}</div>;
-                }
-                return (
-                  <ul className="list-disc list-outside space-y-1 ml-4">
-                    {content.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                );
-              })()}
-            </div>
+            <Textarea
+              id="exercise"
+              value={formData.exercise}
+              onChange={(e) => setFormData(prev => ({ ...prev, exercise: e.target.value }))}
+              placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
+              disabled={!formData.topic}
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed"
+            />
           </div>
           
           <div>
