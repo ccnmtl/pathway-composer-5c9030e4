@@ -358,7 +358,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
                         {option}
                       </div>
                     </div>
@@ -391,7 +391,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
                         {option}
                       </div>
                     </div>
@@ -424,7 +424,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
                         {option}
                       </div>
                     </div>
@@ -457,7 +457,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
                         {option}
                       </div>
                     </div>
