@@ -194,7 +194,14 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
 
   const [showError, setShowError] = useState(false);
   const [isExerciseManuallyEdited, setIsExerciseManuallyEdited] = useState(false);
-  const [exerciseContentByTopic, setExerciseContentByTopic] = useState<Record<string, string>>({});
+  const [contentByTopic, setContentByTopic] = useState<Record<string, {
+    proficiency: string;
+    ensemble: string;
+    activity: string;
+    instruction: string;
+    exercise: string;
+    facultyNotes: string;
+  }>>({});
 
   useEffect(() => {
     if (pathway) {
@@ -208,17 +215,24 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         facultyNotes: pathway.facultyNotes || ''
       });
       setIsExerciseManuallyEdited(false);
-      setExerciseContentByTopic({});
+      setContentByTopic({});
     }
   }, [pathway]);
 
-  // Save current exercise content when topic changes
+  // Save current content when topic changes
   const handleTopicChange = (newTopic: string) => {
-    // Save current exercise content for the previous topic
-    if (formData.topic && formData.exercise) {
-      setExerciseContentByTopic(prev => ({
+    // Save current content for the previous topic
+    if (formData.topic) {
+      setContentByTopic(prev => ({
         ...prev,
-        [formData.topic]: formData.exercise
+        [formData.topic]: {
+          proficiency: formData.proficiency,
+          ensemble: formData.ensemble,
+          activity: formData.activity,
+          instruction: formData.instruction,
+          exercise: formData.exercise,
+          facultyNotes: formData.facultyNotes
+        }
       }));
     }
 
@@ -226,13 +240,29 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     setFormData(prev => ({ ...prev, topic: newTopic }));
 
     // Load saved content for new topic or default content
-    const savedContent = exerciseContentByTopic[newTopic];
+    const savedContent = contentByTopic[newTopic];
     if (savedContent) {
-      setFormData(prev => ({ ...prev, exercise: savedContent }));
+      setFormData(prev => ({ 
+        ...prev, 
+        proficiency: savedContent.proficiency,
+        ensemble: savedContent.ensemble,
+        activity: savedContent.activity,
+        instruction: savedContent.instruction,
+        exercise: savedContent.exercise,
+        facultyNotes: savedContent.facultyNotes
+      }));
     } else {
       const exerciseContent = getExerciseContent(category, newTopic);
       const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
-      setFormData(prev => ({ ...prev, exercise: exerciseText }));
+      setFormData(prev => ({ 
+        ...prev, 
+        proficiency: getProficiencyOptions(category).join(', '),
+        ensemble: getEnsembleOptions(category).join(', '),
+        activity: getActivityOptions(category).join(', '),
+        instruction: instructionOptions.join(', '),
+        exercise: exerciseText,
+        facultyNotes: ''
+      }));
     }
   };
 

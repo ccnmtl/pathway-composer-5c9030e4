@@ -192,6 +192,14 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
 
   const [showError, setShowError] = useState(false);
   const [showDuplicateError, setShowDuplicateError] = useState(false);
+  const [contentByTopic, setContentByTopic] = useState<Record<string, {
+    proficiency: string;
+    ensemble: string;
+    activity: string;
+    instruction: string;
+    exercise: string;
+    facultyNotes: string;
+  }>>({});
 
   // Pre-populate fields when category changes
   useEffect(() => {
@@ -204,16 +212,52 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     }));
   }, [category]);
 
-  // Pre-populate exercise content when topic changes
-  useEffect(() => {
+  // Handle topic change with content saving
+  const handleTopicChange = (newTopic: string) => {
+    // Save current content for the previous topic
     if (formData.topic) {
-      const exerciseContent = getExerciseContent(category, formData.topic);
-      const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
-      setFormData(prev => ({ ...prev, exercise: exerciseText }));
-    } else {
-      setFormData(prev => ({ ...prev, exercise: '' }));
+      setContentByTopic(prev => ({
+        ...prev,
+        [formData.topic]: {
+          proficiency: formData.proficiency,
+          ensemble: formData.ensemble,
+          activity: formData.activity,
+          instruction: formData.instruction,
+          exercise: formData.exercise,
+          facultyNotes: formData.facultyNotes
+        }
+      }));
     }
-  }, [formData.topic, category]);
+
+    // Update form data with new topic
+    setFormData(prev => ({ ...prev, topic: newTopic }));
+
+    // Load saved content for new topic or default content
+    const savedContent = contentByTopic[newTopic];
+    if (savedContent) {
+      setFormData(prev => ({ 
+        ...prev, 
+        proficiency: savedContent.proficiency,
+        ensemble: savedContent.ensemble,
+        activity: savedContent.activity,
+        instruction: savedContent.instruction,
+        exercise: savedContent.exercise,
+        facultyNotes: savedContent.facultyNotes
+      }));
+    } else {
+      const exerciseContent = getExerciseContent(category, newTopic);
+      const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
+      setFormData(prev => ({ 
+        ...prev, 
+        proficiency: getProficiencyOptions(category).join(', '),
+        ensemble: getEnsembleOptions(category).join(', '),
+        activity: getActivityOptions(category).join(', '),
+        instruction: instructionOptions.join(', '),
+        exercise: exerciseText,
+        facultyNotes: ''
+      }));
+    }
+  };
 
   const handleSave = () => {
     // Check if topic is selected
@@ -303,7 +347,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
              <Label htmlFor="topic" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
                TOPIC
              </Label>
-            <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
+            <Select value={formData.topic} onValueChange={handleTopicChange}>
               <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]">
                 <SelectValue placeholder="Select one." />
               </SelectTrigger>
