@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RefreshCw } from 'lucide-react';
 
 interface PathwayData {
   id: string;
@@ -316,51 +318,179 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           </div>
           
           <div>
-             <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               PROFICIENCY
-             </Label>
-            <Input
-              id="proficiency"
-              value={formData.proficiency}
-              onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
-               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-            />
+              <div className="flex items-center justify-between mb-2">
+                <Label className="text-xs font-medium text-white uppercase tracking-wider">
+                  PROFICIENCY
+                </Label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setFormData(prev => ({ ...prev, proficiency: getProficiencyOptions(category).join(', ') }))}
+                  className="text-white hover:bg-white/10 p-1 h-auto"
+                >
+                  <RefreshCw className="h-3 w-3" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {getProficiencyOptions(category).map((option) => {
+                  const isChecked = formData.proficiency.split(', ').includes(option);
+                  return (
+                    <div key={option} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`proficiency-${option}`}
+                        checked={isChecked}
+                        onCheckedChange={(checked) => {
+                          const currentOptions = formData.proficiency.split(', ').filter(o => o);
+                          if (checked) {
+                            const newOptions = [...currentOptions, option];
+                            setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                          } else {
+                            const newOptions = currentOptions.filter(o => o !== option);
+                            setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                          }
+                        }}
+                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                      />
+                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                        {option}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
           </div>
           
           <div>
-             <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               ENSEMBLE
-             </Label>
-            <Input
-              id="ensemble"
-              value={formData.ensemble}
-              onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
-               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-            />
+              <div className="flex items-center justify-between mb-2">
+                <Label className="text-xs font-medium text-white uppercase tracking-wider">
+                  ENSEMBLE
+                </Label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setFormData(prev => ({ ...prev, ensemble: getEnsembleOptions(category).join(', ') }))}
+                  className="text-white hover:bg-white/10 p-1 h-auto"
+                >
+                  <RefreshCw className="h-3 w-3" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {getEnsembleOptions(category).map((option) => {
+                  const isChecked = formData.ensemble.split(', ').includes(option);
+                  return (
+                    <div key={option} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`ensemble-${option}`}
+                        checked={isChecked}
+                        onCheckedChange={(checked) => {
+                          const currentOptions = formData.ensemble.split(', ').filter(o => o);
+                          if (checked) {
+                            const newOptions = [...currentOptions, option];
+                            setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
+                          } else {
+                            const newOptions = currentOptions.filter(o => o !== option);
+                            setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
+                          }
+                        }}
+                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                      />
+                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                        {option}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
           </div>
           
           <div>
-             <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               ACTIVITY
-             </Label>
-            <Input
-              id="activity"
-              value={formData.activity}
-              onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
-               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-            />
+              <div className="flex items-center justify-between mb-2">
+                <Label className="text-xs font-medium text-white uppercase tracking-wider">
+                  ACTIVITY
+                </Label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setFormData(prev => ({ ...prev, activity: getActivityOptions(category).join(', ') }))}
+                  className="text-white hover:bg-white/10 p-1 h-auto"
+                >
+                  <RefreshCw className="h-3 w-3" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {getActivityOptions(category).map((option) => {
+                  const isChecked = formData.activity.split(', ').includes(option);
+                  return (
+                    <div key={option} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`activity-${option}`}
+                        checked={isChecked}
+                        onCheckedChange={(checked) => {
+                          const currentOptions = formData.activity.split(', ').filter(o => o);
+                          if (checked) {
+                            const newOptions = [...currentOptions, option];
+                            setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
+                          } else {
+                            const newOptions = currentOptions.filter(o => o !== option);
+                            setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
+                          }
+                        }}
+                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                      />
+                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                        {option}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
           </div>
           
           <div>
-             <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               INSTRUCTION
-             </Label>
-            <Input
-              id="instruction"
-              value={formData.instruction}
-              onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
-               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-            />
+              <div className="flex items-center justify-between mb-2">
+                <Label className="text-xs font-medium text-white uppercase tracking-wider">
+                  INSTRUCTION
+                </Label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setFormData(prev => ({ ...prev, instruction: instructionOptions.join(', ') }))}
+                  className="text-white hover:bg-white/10 p-1 h-auto"
+                >
+                  <RefreshCw className="h-3 w-3" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {instructionOptions.map((option) => {
+                  const isChecked = formData.instruction.split(', ').includes(option);
+                  return (
+                    <div key={option} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`instruction-${option}`}
+                        checked={isChecked}
+                        onCheckedChange={(checked) => {
+                          const currentOptions = formData.instruction.split(', ').filter(o => o);
+                          if (checked) {
+                            const newOptions = [...currentOptions, option];
+                            setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
+                          } else {
+                            const newOptions = currentOptions.filter(o => o !== option);
+                            setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
+                          }
+                        }}
+                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                      />
+                      <div className="bg-black border border-white px-2 py-1 rounded text-white text-sm">
+                        {option}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
           </div>
           
           <div>
