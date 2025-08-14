@@ -384,7 +384,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
                       </div>
                     </div>
@@ -417,7 +417,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
                       </div>
                     </div>
@@ -450,7 +450,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
                       </div>
                     </div>
@@ -483,7 +483,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                         }}
                         className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
                       />
-                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-black border border-white text-white' : 'bg-transparent border border-black text-black'}`}>
+                      <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
                       </div>
                     </div>
