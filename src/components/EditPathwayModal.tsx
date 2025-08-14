@@ -191,7 +191,6 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   });
 
   const [showError, setShowError] = useState(false);
-  const [showDuplicateError, setShowDuplicateError] = useState(false);
 
   useEffect(() => {
     if (pathway) {
@@ -220,20 +219,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     // Check if topic is selected
     if (!formData.topic) {
       setShowError(true);
-      setShowDuplicateError(false);
       return; // Don't save if topic is not selected
-    }
-
-    // Check for duplicates (only based on topic since other fields are display-only, excluding current pathway)
-    const isDuplicate = existingPathways.some(existingPathway => 
-      existingPathway.id !== pathway?.id &&
-      existingPathway.topic === formData.topic
-    );
-
-    if (isDuplicate) {
-      setShowDuplicateError(true);
-      setShowError(false);
-      return;
     }
 
     if (pathway) {
@@ -250,12 +236,10 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
     onClose();
     setShowError(false);
-    setShowDuplicateError(false);
   };
 
   const handleCancel = () => {
     setShowError(false);
-    setShowDuplicateError(false);
     onClose();
   };
 
@@ -382,11 +366,6 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
         )}
         
-        {showDuplicateError && (
-          <div className="text-red-500 text-sm mt-4">
-            A pathway with this topic already exists. Please select a different topic.
-          </div>
-        )}
         
         <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
           <Button
