@@ -538,13 +538,13 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         </div>
         
         {showError && (
-          <div className="text-red-500 text-sm mt-4">
+          <div className="bg-red-500 text-white text-sm mt-4 p-3 rounded">
             Please select a topic.
           </div>
         )}
         
         {validationErrors.length > 0 && (
-          <div className="text-red-500 text-sm mt-4">
+          <div className="bg-red-500 text-white text-sm mt-4 p-3 rounded">
             {validationErrors.map((error, index) => (
               <div key={index} className="mb-1">{error}</div>
             ))}

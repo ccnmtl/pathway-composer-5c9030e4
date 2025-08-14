@@ -563,19 +563,19 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
         </div>
         
         {showError && (
-          <div className="text-red-500 text-sm mt-4">
+          <div className="bg-red-500 text-white text-sm mt-4 p-3 rounded">
             Please select a topic.
           </div>
         )}
         
         {showDuplicateError && (
-          <div className="text-red-500 text-sm mt-4">
+          <div className="bg-red-500 text-white text-sm mt-4 p-3 rounded">
             A pathway with this topic already exists. Please select a different topic.
           </div>
         )}
         
         {validationErrors.length > 0 && (
-          <div className="text-red-500 text-sm mt-4">
+          <div className="bg-red-500 text-white text-sm mt-4 p-3 rounded">
             {validationErrors.map((error, index) => (
               <div key={index} className="mb-1">{error}</div>
             ))}
