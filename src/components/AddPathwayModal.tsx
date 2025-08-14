@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
@@ -190,6 +191,17 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
   const [showError, setShowError] = useState(false);
   const [showDuplicateError, setShowDuplicateError] = useState(false);
 
+  // Pre-populate fields when category changes
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      proficiency: getProficiencyOptions(category).join(', '),
+      ensemble: getEnsembleOptions(category).join(', '),
+      activity: getActivityOptions(category).join(', '),
+      instruction: instructionOptions.join(', ')
+    }));
+  }, [category]);
+
   const handleSave = () => {
     // Check if topic is selected
     if (!formData.topic) {
@@ -215,10 +227,10 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     const newPathway: PathwayData = {
       id: Date.now().toString(),
       topic: formData.topic,
-      proficiency: getProficiencyOptions(category).join(', '),
-      ensemble: getEnsembleOptions(category).join(', '),
-      activity: getActivityOptions(category).join(', '),
-      instruction: instructionOptions.join(', '),
+      proficiency: formData.proficiency,
+      ensemble: formData.ensemble,
+      activity: formData.activity,
+      instruction: formData.instruction,
       exercise: exerciseText,
       facultyNotes: formData.facultyNotes
     };
@@ -286,36 +298,48 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
             <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               PROFICIENCY
             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Beginner, Intermediate, Advanced
-            </div>
+            <Input
+              id="proficiency"
+              value={formData.proficiency}
+              onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+            />
           </div>
           
           <div>
             <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ENSEMBLE
             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Solo, Duet, Trio, Quartet
-            </div>
+            <Input
+              id="ensemble"
+              value={formData.ensemble}
+              onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+            />
           </div>
           
           <div>
             <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ACTIVITY
             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Compose, Improvise, Move, Notate, Play, Read, Sing
-            </div>
+            <Input
+              id="activity"
+              value={formData.activity}
+              onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+            />
           </div>
           
           <div>
             <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               INSTRUCTION
             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Instructor-led, Student Led
-            </div>
+            <Input
+              id="instruction"
+              value={formData.instruction}
+              onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+            />
           </div>
           
           <div>
