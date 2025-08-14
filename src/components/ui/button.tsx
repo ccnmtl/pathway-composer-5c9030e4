@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        modalCancel: "bg-[hsl(var(--modal-cancel-bg))] text-white hover:bg-[hsl(var(--modal-cancel-bg))]/90",
+        modalAction: "bg-[hsl(var(--modal-action-bg))] text-black hover:bg-[hsl(var(--modal-action-bg))]/90",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -78,6 +78,10 @@ All colors MUST be HSL.
     
     /* Card hover border colors */
     --card-hover-border: 0 0% 0%;            /* black for light mode */
+    
+    /* Modal button colors */
+    --modal-cancel-bg: 0 0% 20%;             /* #333333 */
+    --modal-action-bg: 0 0% 100%;            /* #ffffff */
   }
 
   .dark {
@@ -141,6 +145,10 @@ All colors MUST be HSL.
     
     /* Card hover border colors */
     --card-hover-border: 0 0% 100%;          /* white for dark mode */
+    
+    /* Modal button colors - same for dark mode */
+    --modal-cancel-bg: 0 0% 20%;             /* #333333 */
+    --modal-action-bg: 0 0% 100%;            /* #ffffff */
   }
 }
 

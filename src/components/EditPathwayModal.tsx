@@ -378,15 +378,16 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         
         <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
           <Button
-            variant="outline"
+            variant="modalCancel"
             onClick={handleCancel}
             className="px-6"
           >
             Cancel
           </Button>
           <Button
+            variant="modalAction"
             onClick={handleSave}
-            className="px-6 bg-[hsl(var(--add-path-button))] hover:bg-[hsl(var(--add-path-button))]/90 text-[hsl(var(--add-path-button-foreground))]"
+            className="px-6"
           >
             Save
           </Button>
