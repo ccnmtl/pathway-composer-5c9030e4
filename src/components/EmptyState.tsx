@@ -9,8 +9,9 @@ const EmptyState: React.FC<EmptyStateProps> = ({ category }) => {
   const getBackgroundColor = () => {
     switch (category.toLowerCase()) {
       case 'rhythm':
-      case 'melody':
         return '#0077c8';
+      case 'melody':
+        return '#76881d';
       case 'harmony':
         return '#ff9800';
       default:
