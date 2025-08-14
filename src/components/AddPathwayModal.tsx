@@ -246,13 +246,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     setShowError(false);
     setShowDuplicateError(false);
-    // Reset form to defaults
+    // Reset form to defaults with pre-populated content
     setFormData({
       topic: '',
-      proficiency: '',
-      ensemble: '',
-      activity: '',
-      instruction: '',
+      proficiency: getProficiencyOptions(category).join(', '),
+      ensemble: getEnsembleOptions(category).join(', '),
+      activity: getActivityOptions(category).join(', '),
+      instruction: instructionOptions.join(', '),
       exercise: '',
       facultyNotes: ''
     });
@@ -262,13 +262,13 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     setShowError(false);
     setShowDuplicateError(false);
-    // Reset form to defaults
+    // Reset form to defaults with pre-populated content
     setFormData({
       topic: '',
-      proficiency: '',
-      ensemble: '',
-      activity: '',
-      instruction: '',
+      proficiency: getProficiencyOptions(category).join(', '),
+      ensemble: getEnsembleOptions(category).join(', '),
+      activity: getActivityOptions(category).join(', '),
+      instruction: instructionOptions.join(', '),
       exercise: '',
       facultyNotes: ''
     });
