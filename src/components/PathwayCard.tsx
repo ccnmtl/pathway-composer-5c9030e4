@@ -125,7 +125,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onEdit(pathway)}
-                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
               >
                 Edit
               </Button>
@@ -133,7 +133,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onCopy(pathway)}
-                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
               >
                 Copy
               </Button>
@@ -143,7 +143,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                    className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
                   >
                     Delete
                   </Button>
@@ -252,7 +252,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onEdit(pathway)}
-                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
               >
                 Edit
               </Button>
@@ -260,7 +260,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 variant="ghost"
                 size="sm"
                 onClick={() => onCopy(pathway)}
-                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
               >
                 Copy
               </Button>
@@ -270,7 +270,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 text-xs min-h-[36px] sm:min-h-auto"
+                    className="text-foreground hover:text-foreground hover:bg-accent text-xs min-h-[36px] sm:min-h-auto"
                   >
                     Delete
                   </Button>
