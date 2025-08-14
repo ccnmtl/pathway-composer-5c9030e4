@@ -207,6 +207,15 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
   }, [pathway]);
 
+  // Update exercise content when topic changes (similar to Add modal)
+  useEffect(() => {
+    if (formData.topic) {
+      const exerciseContent = getExerciseContent(category, formData.topic);
+      const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
+      setFormData(prev => ({ ...prev, exercise: exerciseText }));
+    }
+  }, [formData.topic, category]);
+
   const handleSave = () => {
     // Check if topic is selected
     if (!formData.topic) {
