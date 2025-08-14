@@ -191,6 +191,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
   });
 
   const [showError, setShowError] = useState(false);
+  const [isExerciseManuallyEdited, setIsExerciseManuallyEdited] = useState(false);
 
   useEffect(() => {
     if (pathway) {
@@ -203,17 +204,18 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         exercise: pathway.exercise,
         facultyNotes: pathway.facultyNotes || ''
       });
+      setIsExerciseManuallyEdited(false);
     }
   }, [pathway]);
 
-  // Update exercise content when topic changes (similar to Add modal)
+  // Update exercise content when topic changes (only if not manually edited)
   useEffect(() => {
-    if (formData.topic) {
+    if (formData.topic && !isExerciseManuallyEdited) {
       const exerciseContent = getExerciseContent(category, formData.topic);
       const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
       setFormData(prev => ({ ...prev, exercise: exerciseText }));
     }
-  }, [formData.topic, category]);
+  }, [formData.topic, category, isExerciseManuallyEdited]);
 
   const handleSave = () => {
     // Check if topic is selected
@@ -336,14 +338,17 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
                 EXERCISE MODELS
               </Label>
-             <Textarea
-               id="exercise"
-               value={formData.exercise}
-               onChange={(e) => setFormData(prev => ({ ...prev, exercise: e.target.value }))}
-               placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
-               disabled={!formData.topic}
-               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-             />
+              <Textarea
+                id="exercise"
+                value={formData.exercise}
+                onChange={(e) => {
+                  setFormData(prev => ({ ...prev, exercise: e.target.value }));
+                  setIsExerciseManuallyEdited(true);
+                }}
+                placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
+                disabled={!formData.topic}
+                className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+              />
            </div>
           
           <div>
