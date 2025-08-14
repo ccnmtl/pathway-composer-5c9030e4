@@ -228,17 +228,14 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
 
     if (pathway) {
-    const exerciseContent = getExerciseContent(category, formData.topic);
-    const exerciseText = typeof exerciseContent === 'string' ? exerciseContent : exerciseContent.join('\n\n');
-      
       onSave({
         ...pathway,
         topic: formData.topic,
-        proficiency: getProficiencyOptions(category).join(', '),
-        ensemble: getEnsembleOptions(category).join(', '),
-        activity: getActivityOptions(category).join(', '),
-        instruction: instructionOptions.join(', '),
-        exercise: exerciseText,
+        proficiency: formData.proficiency,
+        ensemble: formData.ensemble,
+        activity: formData.activity,
+        instruction: formData.instruction,
+        exercise: formData.exercise,
         facultyNotes: formData.facultyNotes
       });
     }
