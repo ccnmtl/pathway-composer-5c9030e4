@@ -277,16 +277,16 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     const instructionSelected = formData.instruction.split(', ').filter(o => o).length > 0;
 
     if (!proficiencySelected) {
-      errors.push("At least one checkbox from PROFICIENCY section must be selected.");
+      errors.push("At least one checkbox from the PROFICIENCY section must be selected.");
     }
     if (!ensembleSelected) {
-      errors.push("At least one checkbox from ENSEMBLE section must be selected.");
+      errors.push("At least one checkbox from the ENSEMBLE section must be selected.");
     }
     if (!activitySelected) {
-      errors.push("At least one checkbox from ACTIVITY section must be selected.");
+      errors.push("At least one checkbox from the ACTIVITY section must be selected.");
     }
     if (!instructionSelected) {
-      errors.push("At least one checkbox from INSTRUCTION section must be selected.");
+      errors.push("At least one checkbox from the INSTRUCTION section must be selected.");
     }
 
     if (errors.length > 0) {
