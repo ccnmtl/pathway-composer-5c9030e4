@@ -382,7 +382,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                             setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
                           }
                         }}
-                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -415,7 +416,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                             setFormData(prev => ({ ...prev, ensemble: newOptions.join(', ') }));
                           }
                         }}
-                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -448,7 +450,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                             setFormData(prev => ({ ...prev, activity: newOptions.join(', ') }));
                           }
                         }}
-                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
@@ -481,7 +484,8 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
                             setFormData(prev => ({ ...prev, instruction: newOptions.join(', ') }));
                           }
                         }}
-                        className="border-white data-[state=checked]:bg-black data-[state=checked]:border-white"
+                        className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
+                        style={!isChecked ? { backgroundColor: '#333333' } : {}}
                       />
                       <div className={`px-2 py-1 rounded text-sm ${isChecked ? 'bg-transparent border border-black text-black' : 'border border-white text-white'}`} style={!isChecked ? { backgroundColor: '#333333' } : {}}>
                         {option}
