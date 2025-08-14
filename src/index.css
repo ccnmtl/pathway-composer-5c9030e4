@@ -69,6 +69,12 @@ All colors MUST be HSL.
     /* Add Path button colors */
     --add-path-button: 0 0% 20%;             /* #333333 for light mode */
     --add-path-button-foreground: 0 0% 100%; /* white text for light mode */
+    
+    /* Modal background colors for categories */
+    --modal-rhythm-bg: 202 100% 39%;         /* #0077c8 */
+    --modal-melody-bg: 69 50% 31%;           /* #76881d */
+    --modal-harmony-bg: 33 100% 50%;         /* #ff9800 */
+    --modal-input-bg: 0 0% 100%;             /* #ffffff for inputs */
   }
 
   .dark {
@@ -123,6 +129,12 @@ All colors MUST be HSL.
     /* Add Path button colors for dark mode */
     --add-path-button: 0 0% 100%;            /* #ffffff for dark mode */
     --add-path-button-foreground: 0 0% 20%;  /* dark text for dark mode */
+    
+    /* Modal background colors for categories (same for dark mode) */
+    --modal-rhythm-bg: 202 100% 39%;         /* #0077c8 */
+    --modal-melody-bg: 69 50% 31%;           /* #76881d */
+    --modal-harmony-bg: 33 100% 50%;         /* #ff9800 */
+    --modal-input-bg: 0 0% 100%;             /* #ffffff for inputs */
   }
 }
 

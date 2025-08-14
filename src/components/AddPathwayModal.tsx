@@ -274,9 +274,22 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     });
   };
 
+  const getModalBgClass = (category: string) => {
+    switch (category) {
+      case "Rhythm":
+        return "bg-[hsl(var(--modal-rhythm-bg))]";
+      case "Melody":
+        return "bg-[hsl(var(--modal-melody-bg))]";
+      case "Harmony":
+        return "bg-[hsl(var(--modal-harmony-bg))]";
+      default:
+        return "bg-background";
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className={`max-w-2xl max-h-[80vh] overflow-y-auto ${getModalBgClass(category)}`}>
         <DialogHeader>
           <DialogTitle className="text-lg font-medium">
             {category} / Add New Pathway
@@ -289,7 +302,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               TOPIC
             </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
-              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400">
+              <SelectTrigger className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]">
                 <SelectValue placeholder="Select one." />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -310,7 +323,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="proficiency"
               value={formData.proficiency}
               onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
           
@@ -322,7 +335,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="ensemble"
               value={formData.ensemble}
               onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
           
@@ -334,7 +347,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="activity"
               value={formData.activity}
               onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
           
@@ -346,7 +359,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               id="instruction"
               value={formData.instruction}
               onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
           
@@ -360,7 +373,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               onChange={(e) => setFormData(prev => ({ ...prev, exercise: e.target.value }))}
               placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
               disabled={!formData.topic}
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
           
@@ -373,7 +386,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
               value={formData.facultyNotes}
               onChange={(e) => setFormData(prev => ({ ...prev, facultyNotes: e.target.value }))}
               placeholder="Enter exercise notes..."
-              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400"
+              className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))]"
             />
           </div>
         </div>
