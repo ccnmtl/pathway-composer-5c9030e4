@@ -252,22 +252,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     onClose();
   };
 
-  const getModalBackgroundClass = () => {
-    switch (category) {
-      case "Rhythm":
-        return "bg-[hsl(var(--modal-rhythm-bg)_/_0.2)]";
-      case "Melody":
-        return "bg-[hsl(var(--modal-melody-bg)_/_0.2)]";
-      case "Harmony":
-        return "bg-[hsl(var(--modal-harmony-bg)_/_0.2)]";
-      default:
-        return "";
-    }
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className={`max-w-2xl max-h-[80vh] overflow-y-auto ${getModalBackgroundClass()}`}>
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-lg font-medium">
             {category} / Edit Pathway
