@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
-import { RefreshCw } from 'lucide-react';
 
 interface PathwayData {
   id: string;
@@ -336,20 +335,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label className="text-xs font-medium text-white uppercase tracking-wider">
-                  PROFICIENCY
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setFormData(prev => ({ ...prev, proficiency: getProficiencyOptions(category).join(', ') }))}
-                  className="text-white hover:bg-white/10 p-1 h-auto"
-                >
-                  <RefreshCw className="h-3 w-3" />
-                </Button>
-              </div>
+              <Label className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                PROFICIENCY
+              </Label>
               <div className="flex flex-wrap gap-2">
                 {getProficiencyOptions(category).map((option) => {
                   const isChecked = formData.proficiency.split(', ').includes(option);
@@ -380,20 +368,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label className="text-xs font-medium text-white uppercase tracking-wider">
-                  ENSEMBLE
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setFormData(prev => ({ ...prev, ensemble: getEnsembleOptions(category).join(', ') }))}
-                  className="text-white hover:bg-white/10 p-1 h-auto"
-                >
-                  <RefreshCw className="h-3 w-3" />
-                </Button>
-              </div>
+              <Label className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ENSEMBLE
+              </Label>
               <div className="flex flex-wrap gap-2">
                 {getEnsembleOptions(category).map((option) => {
                   const isChecked = formData.ensemble.split(', ').includes(option);
@@ -424,20 +401,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label className="text-xs font-medium text-white uppercase tracking-wider">
-                  ACTIVITY
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setFormData(prev => ({ ...prev, activity: getActivityOptions(category).join(', ') }))}
-                  className="text-white hover:bg-white/10 p-1 h-auto"
-                >
-                  <RefreshCw className="h-3 w-3" />
-                </Button>
-              </div>
+              <Label className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ACTIVITY
+              </Label>
               <div className="flex flex-wrap gap-2">
                 {getActivityOptions(category).map((option) => {
                   const isChecked = formData.activity.split(', ').includes(option);
@@ -468,20 +434,9 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
            </div>
           
            <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label className="text-xs font-medium text-white uppercase tracking-wider">
-                  INSTRUCTION
-                </Label>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setFormData(prev => ({ ...prev, instruction: instructionOptions.join(', ') }))}
-                  className="text-white hover:bg-white/10 p-1 h-auto"
-                >
-                  <RefreshCw className="h-3 w-3" />
-                </Button>
-              </div>
+              <Label className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                INSTRUCTION
+              </Label>
               <div className="flex flex-wrap gap-2">
                 {instructionOptions.map((option) => {
                   const isChecked = formData.instruction.split(', ').includes(option);
