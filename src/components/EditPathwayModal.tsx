@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -293,62 +294,67 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
             </Select>
           </div>
           
-          <div>
-             <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               PROFICIENCY
-             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Beginner, Intermediate, Advanced
-            </div>
-          </div>
+           <div>
+              <Label htmlFor="proficiency" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                PROFICIENCY
+              </Label>
+             <Input
+               id="proficiency"
+               value={formData.proficiency}
+               onChange={(e) => setFormData(prev => ({ ...prev, proficiency: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
+           </div>
           
-          <div>
-             <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               ENSEMBLE
-             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Solo, Duet, Trio, Quartet
-            </div>
-          </div>
+           <div>
+              <Label htmlFor="ensemble" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ENSEMBLE
+              </Label>
+             <Input
+               id="ensemble"
+               value={formData.ensemble}
+               onChange={(e) => setFormData(prev => ({ ...prev, ensemble: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
+           </div>
           
-          <div>
-             <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               ACTIVITY
-             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Compose, Improvise, Move, Notate, Play, Read, Sing
-            </div>
-          </div>
+           <div>
+              <Label htmlFor="activity" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                ACTIVITY
+              </Label>
+             <Input
+               id="activity"
+               value={formData.activity}
+               onChange={(e) => setFormData(prev => ({ ...prev, activity: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
+           </div>
           
-          <div>
-             <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               INSTRUCTION
-             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              Instructor-led, Student Led
-            </div>
-          </div>
+           <div>
+              <Label htmlFor="instruction" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                INSTRUCTION
+              </Label>
+             <Input
+               id="instruction"
+               value={formData.instruction}
+               onChange={(e) => setFormData(prev => ({ ...prev, instruction: e.target.value }))}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
+           </div>
           
-          <div>
-             <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
-               EXERCISE MODELS
-             </Label>
-            <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
-              {(() => {
-                const content = getExerciseContent(category, formData.topic);
-                if (typeof content === 'string') {
-                  return <div>{content}</div>;
-                }
-                return (
-                  <ul className="list-disc list-outside space-y-1 ml-4">
-                    {content.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                );
-              })()}
-            </div>
-          </div>
+           <div>
+              <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
+                EXERCISE MODELS
+              </Label>
+             <Textarea
+               id="exercise"
+               value={formData.exercise}
+               onChange={(e) => setFormData(prev => ({ ...prev, exercise: e.target.value }))}
+               placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
+               disabled={!formData.topic}
+               className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+             />
+           </div>
           
           <div>
              <Label htmlFor="facultyNotes" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
