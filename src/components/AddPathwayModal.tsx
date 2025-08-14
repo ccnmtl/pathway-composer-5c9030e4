@@ -289,7 +289,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className={`max-w-2xl max-h-[80vh] overflow-y-auto ${getModalBgClass(category)}`}>
+      <DialogContent className={`max-w-4xl max-h-[96vh] overflow-y-auto ${getModalBgClass(category)}`}>
          <DialogHeader>
            <DialogTitle className="text-lg font-medium text-white">
              {category} / Add New Pathway
