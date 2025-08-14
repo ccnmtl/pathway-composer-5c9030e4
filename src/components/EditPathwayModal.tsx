@@ -276,7 +276,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         
         <div className="space-y-6 py-4">
           <div>
-            <Label htmlFor="topic" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="topic" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               TOPIC
             </Label>
             <Select value={formData.topic} onValueChange={(value) => setFormData(prev => ({ ...prev, topic: value }))}>
@@ -294,7 +294,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="proficiency" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="proficiency" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               PROFICIENCY
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
@@ -303,7 +303,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="ensemble" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="ensemble" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ENSEMBLE
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
@@ -312,7 +312,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="activity" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="activity" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               ACTIVITY
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
@@ -321,7 +321,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="instruction" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="instruction" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               INSTRUCTION
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
@@ -330,7 +330,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="exercise" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               EXERCISE MODELS
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
@@ -351,7 +351,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="facultyNotes" className="text-xs font-medium text-black uppercase tracking-wider mb-2 block">
+            <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               FACULTY NOTES
             </Label>
             <Textarea
