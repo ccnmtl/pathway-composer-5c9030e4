@@ -320,7 +320,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           
           <div>
             <Label htmlFor="exercise" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              EXERCISE
+              EXERCISE MODELS
             </Label>
             <div className="px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
               {(() => {
@@ -341,7 +341,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
           
           <div>
             <Label htmlFor="facultyNotes" className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              EXERCISE NOTES
+              FACULTY NOTES
             </Label>
             <Textarea
               id="facultyNotes"
