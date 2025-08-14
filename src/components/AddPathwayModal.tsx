@@ -191,6 +191,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
 
   const [showError, setShowError] = useState(false);
   const [showDuplicateError, setShowDuplicateError] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [contentByTopic, setContentByTopic] = useState<Record<string, {
     proficiency: string;
     ensemble: string;
@@ -263,7 +264,36 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     if (!formData.topic) {
       setShowError(true);
       setShowDuplicateError(false);
+      setValidationErrors([]);
       return; // Don't save if topic is not selected
+    }
+
+    // Validate at least one checkbox is selected from each section
+    const errors: string[] = [];
+    
+    const proficiencySelected = formData.proficiency.split(', ').filter(o => o).length > 0;
+    const ensembleSelected = formData.ensemble.split(', ').filter(o => o).length > 0;
+    const activitySelected = formData.activity.split(', ').filter(o => o).length > 0;
+    const instructionSelected = formData.instruction.split(', ').filter(o => o).length > 0;
+
+    if (!proficiencySelected) {
+      errors.push("At least one checkbox from PROFICIENCY section must be selected.");
+    }
+    if (!ensembleSelected) {
+      errors.push("At least one checkbox from ENSEMBLE section must be selected.");
+    }
+    if (!activitySelected) {
+      errors.push("At least one checkbox from ACTIVITY section must be selected.");
+    }
+    if (!instructionSelected) {
+      errors.push("At least one checkbox from INSTRUCTION section must be selected.");
+    }
+
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      setShowError(false);
+      setShowDuplicateError(false);
+      return;
     }
 
     // Check for duplicates (only based on topic since other fields are display-only)
@@ -274,6 +304,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     if (isDuplicate) {
       setShowDuplicateError(true);
       setShowError(false);
+      setValidationErrors([]);
       return;
     }
 
@@ -291,6 +322,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     setShowError(false);
     setShowDuplicateError(false);
+    setValidationErrors([]);
     // Reset form to defaults with pre-populated content
     setFormData({
       topic: '',
@@ -307,6 +339,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     onClose();
     setShowError(false);
     setShowDuplicateError(false);
+    setValidationErrors([]);
     // Reset form to defaults with pre-populated content
     setFormData({
       topic: '',
@@ -538,6 +571,14 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
         {showDuplicateError && (
           <div className="text-red-500 text-sm mt-4">
             A pathway with this topic already exists. Please select a different topic.
+          </div>
+        )}
+        
+        {validationErrors.length > 0 && (
+          <div className="text-red-500 text-sm mt-4">
+            {validationErrors.map((error, index) => (
+              <div key={index} className="mb-1">{error}</div>
+            ))}
           </div>
         )}
         

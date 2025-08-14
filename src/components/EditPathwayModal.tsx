@@ -193,6 +193,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
 
   const [showError, setShowError] = useState(false);
   const [isExerciseManuallyEdited, setIsExerciseManuallyEdited] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [contentByTopic, setContentByTopic] = useState<Record<string, {
     proficiency: string;
     ensemble: string;
@@ -269,7 +270,35 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     // Check if topic is selected
     if (!formData.topic) {
       setShowError(true);
+      setValidationErrors([]);
       return; // Don't save if topic is not selected
+    }
+
+    // Validate at least one checkbox is selected from each section
+    const errors: string[] = [];
+    
+    const proficiencySelected = formData.proficiency.split(', ').filter(o => o).length > 0;
+    const ensembleSelected = formData.ensemble.split(', ').filter(o => o).length > 0;
+    const activitySelected = formData.activity.split(', ').filter(o => o).length > 0;
+    const instructionSelected = formData.instruction.split(', ').filter(o => o).length > 0;
+
+    if (!proficiencySelected) {
+      errors.push("At least one checkbox from PROFICIENCY section must be selected.");
+    }
+    if (!ensembleSelected) {
+      errors.push("At least one checkbox from ENSEMBLE section must be selected.");
+    }
+    if (!activitySelected) {
+      errors.push("At least one checkbox from ACTIVITY section must be selected.");
+    }
+    if (!instructionSelected) {
+      errors.push("At least one checkbox from INSTRUCTION section must be selected.");
+    }
+
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      setShowError(false);
+      return;
     }
 
     if (pathway) {
@@ -286,10 +315,12 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
     onClose();
     setShowError(false);
+    setValidationErrors([]);
   };
 
   const handleCancel = () => {
     setShowError(false);
+    setValidationErrors([]);
     onClose();
   };
 
@@ -509,6 +540,14 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         {showError && (
           <div className="text-red-500 text-sm mt-4">
             Please select a topic.
+          </div>
+        )}
+        
+        {validationErrors.length > 0 && (
+          <div className="text-red-500 text-sm mt-4">
+            {validationErrors.map((error, index) => (
+              <div key={index} className="mb-1">{error}</div>
+            ))}
           </div>
         )}
         
