@@ -296,10 +296,10 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
     // Validate at least one checkbox is selected from each section
     const errors: string[] = [];
     
-    const proficiencySelected = formData.proficiency.split(', ').filter(o => o).length > 0;
-    const ensembleSelected = formData.ensemble.split(', ').filter(o => o).length > 0;
-    const activitySelected = formData.activity.split(', ').filter(o => o).length > 0;
-    const instructionSelected = formData.instruction.split(', ').filter(o => o).length > 0;
+    const proficiencySelected = formData.proficiency.split(', ').filter(o => o.trim() !== '').length > 0;
+    const ensembleSelected = formData.ensemble.split(', ').filter(o => o.trim() !== '').length > 0;
+    const activitySelected = formData.activity.split(', ').filter(o => o.trim() !== '').length > 0;
+    const instructionSelected = formData.instruction.split(', ').filter(o => o.trim() !== '').length > 0;
 
     if (!proficiencySelected) {
       errors.push("At least one checkbox from the PROFICIENCY section must be selected.");
