@@ -69,11 +69,11 @@ const getEnsembleOptions = (category: string) => {
 const getActivityOptions = (category: string) => {
   switch (category) {
     case "Rhythm":
-      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
+      return ["Move", "Speak", "Sing", "Play", "Compose", "Improvise", "Read", "Notate"];
     case "Melody":
-      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
+      return ["Move", "Speak", "Sing", "Play", "Compose", "Improvise", "Read", "Notate"];
     case "Harmony":
-      return ["Compose", "Improvise", "Move", "Notate", "Play", "Read", "Sing"];
+      return ["Move", "Speak", "Sing", "Play", "Compose", "Improvise", "Read", "Notate"];
     default:
       return [];
   }
