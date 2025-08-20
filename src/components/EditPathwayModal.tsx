@@ -219,6 +219,34 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
     }
   }, [pathway]);
 
+  // Function to filter exercise content based on selected proficiency levels
+  const getFilteredExerciseContent = () => {
+    if (!formData.topic) return "Select a topic first.";
+    
+    // If exercise was manually edited, return the current value
+    if (isExerciseManuallyEdited) return formData.exercise;
+    
+    const exerciseContent = getExerciseContent(category, formData.topic);
+    if (typeof exerciseContent === 'string') return exerciseContent;
+    
+    const selectedProficiencies = formData.proficiency.split(', ').filter(p => p);
+    
+    // If all proficiency levels are selected, show all content
+    const allProficiencies = getProficiencyOptions(category);
+    if (selectedProficiencies.length === allProficiencies.length) {
+      return exerciseContent.join('\n\n');
+    }
+    
+    // Filter content based on selected proficiency levels
+    const filteredContent = exerciseContent.filter(exercise => {
+      return selectedProficiencies.some(proficiency => 
+        exercise.startsWith(`${proficiency}/`)
+      );
+    });
+    
+    return filteredContent.join('\n\n');
+  };
+
   // Save current content when topic changes
   const handleTopicChange = (newTopic: string) => {
     // Save current content for the previous topic
@@ -264,6 +292,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         facultyNotes: ''
       }));
     }
+    setIsExerciseManuallyEdited(false);
   };
 
   const handleSave = () => {
@@ -378,15 +407,27 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
                           id={`proficiency-${option}`}
                           checked={isChecked}
                           disabled={!formData.topic}
-                          onCheckedChange={(checked) => {
-                            const currentOptions = formData.proficiency.split(', ').filter(o => o);
-                            if (checked) {
-                              const newOptions = [...currentOptions, option];
-                              setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
-                            } else {
-                              const newOptions = currentOptions.filter(o => o !== option);
-                              setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
-                            }
+                           onCheckedChange={(checked) => {
+                             const currentOptions = formData.proficiency.split(', ').filter(o => o);
+                             if (checked) {
+                               const newOptions = [...currentOptions, option];
+                               setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                               // Update exercise content if not manually edited
+                               if (!isExerciseManuallyEdited && formData.topic) {
+                                 setTimeout(() => {
+                                   setFormData(prev => ({ ...prev, exercise: getFilteredExerciseContent() }));
+                                 }, 0);
+                               }
+                             } else {
+                               const newOptions = currentOptions.filter(o => o !== option);
+                               setFormData(prev => ({ ...prev, proficiency: newOptions.join(', ') }));
+                               // Update exercise content if not manually edited
+                               if (!isExerciseManuallyEdited && formData.topic) {
+                                 setTimeout(() => {
+                                   setFormData(prev => ({ ...prev, exercise: getFilteredExerciseContent() }));
+                                 }, 0);
+                               }
+                             }
                           }}
                           className="data-[state=checked]:bg-transparent data-[state=checked]:border-black data-[state=checked]:text-black border-white text-white"
                           style={!isChecked ? { backgroundColor: '#333333' } : {}}
@@ -501,17 +542,17 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
               <Label htmlFor="exercise" className="text-xs font-medium text-white uppercase tracking-wider mb-2 block">
                 EXERCISE MODELS
               </Label>
-              <Textarea
-                id="exercise"
-                value={formData.exercise}
-                onChange={(e) => {
-                  setFormData(prev => ({ ...prev, exercise: e.target.value }));
-                  setIsExerciseManuallyEdited(true);
-                }}
-                placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
-                disabled={!formData.topic}
-                className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
-              />
+               <Textarea
+                 id="exercise"
+                 value={isExerciseManuallyEdited ? formData.exercise : getFilteredExerciseContent()}
+                 onChange={(e) => {
+                   setFormData(prev => ({ ...prev, exercise: e.target.value }));
+                   setIsExerciseManuallyEdited(true);
+                 }}
+                 placeholder={formData.topic ? "Exercise content will appear here..." : "Select a topic first."}
+                 disabled={!formData.topic}
+                 className="border-gray-200 focus:border-blue-400 focus:ring-blue-400 min-h-[120px] disabled:opacity-50 disabled:cursor-not-allowed bg-[hsl(var(--modal-input-bg))] text-[hsl(var(--modal-input-text))]"
+               />
            </div>
           
           <div>
