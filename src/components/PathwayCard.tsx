@@ -38,6 +38,30 @@ interface PathwayCardProps {
 const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDelete, dragHandleProps, category }) => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
+  // Function to filter exercise content based on selected proficiency levels
+  const getFilteredExerciseContent = () => {
+    if (!pathway.exercise) return "";
+    
+    const selectedProficiencies = pathway.proficiency.split(', ').filter(p => p);
+    const exerciseLines = pathway.exercise.split('\n\n'); // Split by double newlines (exercise blocks)
+    
+    // If all proficiency levels are selected (Beginner, Intermediate, Advanced), show all content
+    const allProficiencies = ["Beginner", "Intermediate", "Advanced"];
+    if (selectedProficiencies.length === allProficiencies.length && 
+        allProficiencies.every(prof => selectedProficiencies.includes(prof))) {
+      return pathway.exercise;
+    }
+    
+    // Filter content based on selected proficiency levels
+    const filteredExercises = exerciseLines.filter(exercise => {
+      return selectedProficiencies.some(proficiency => 
+        exercise.trim().startsWith(`${proficiency}/`)
+      );
+    });
+    
+    return filteredExercises.join('\n\n');
+  };
+
   const handleDeleteConfirm = () => {
     onDelete(pathway.id);
     setShowDeleteAlert(false);
@@ -93,7 +117,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               {/* Exercise */}
               <div>
                 <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">
-                  {pathway.exercise.split('\n').map((line, index) => (
+                  {getFilteredExerciseContent().split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {(() => {
                         const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
@@ -107,7 +131,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                         }
                         return <span>{line}</span>;
                       })()}
-                      {index < pathway.exercise.split('\n').length - 1 && <br />}
+                      {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
                     </React.Fragment>
                   ))}
                 </p>
@@ -220,7 +244,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               {/* Exercise */}
               <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words whitespace-pre-line">
-                  {pathway.exercise.split('\n').map((line, index) => (
+                  {getFilteredExerciseContent().split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {(() => {
                         const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
@@ -234,7 +258,7 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                         }
                         return <span>{line}</span>;
                       })()}
-                      {index < pathway.exercise.split('\n').length - 1 && <br />}
+                      {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
                     </React.Fragment>
                   ))}
                 </p>
