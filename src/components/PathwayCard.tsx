@@ -117,23 +117,24 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               {/* Exercise */}
               <div>
                 <p className="text-sm text-card-foreground break-words leading-relaxed whitespace-pre-line">
-                  {getFilteredExerciseContent().split('\n').map((line, index) => (
-                    <React.Fragment key={index}>
-                      {(() => {
-                        const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
-                        if (firstColonMatch) {
-                          return (
-                            <>
-                              <span className="font-bold">{firstColonMatch[1]}</span>
-                              {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
-                            </>
-                          );
-                        }
-                        return <span>{line}</span>;
-                      })()}
-                      {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
+                  {getFilteredExerciseContent().split('\n').map((line, index) => {
+                    const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
+                    if (firstColonMatch) {
+                      return (
+                        <span key={index}>
+                          <span className="font-bold">{firstColonMatch[1]}</span>
+                          {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
+                          {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
+                        </span>
+                      );
+                    }
+                    return (
+                      <span key={index}>
+                        {line}
+                        {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
+                      </span>
+                    );
+                  })}
                 </p>
               </div>
               
@@ -244,23 +245,24 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
               {/* Exercise */}
               <div className="p-4 border-r border-border">
                 <p className="text-sm text-card-foreground break-words whitespace-pre-line">
-                  {getFilteredExerciseContent().split('\n').map((line, index) => (
-                    <React.Fragment key={index}>
-                      {(() => {
-                        const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
-                        if (firstColonMatch) {
-                          return (
-                            <>
-                              <span className="font-bold">{firstColonMatch[1]}</span>
-                              {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
-                            </>
-                          );
-                        }
-                        return <span>{line}</span>;
-                      })()}
-                      {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
+                  {getFilteredExerciseContent().split('\n').map((line, index) => {
+                    const firstColonMatch = line.match(/^([^:]+:)\s*(.*)/);
+                    if (firstColonMatch) {
+                      return (
+                        <span key={index}>
+                          <span className="font-bold">{firstColonMatch[1]}</span>
+                          {firstColonMatch[2] && <span> {firstColonMatch[2]}</span>}
+                          {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
+                        </span>
+                      );
+                    }
+                    return (
+                      <span key={index}>
+                        {line}
+                        {index < getFilteredExerciseContent().split('\n').length - 1 && <br />}
+                      </span>
+                    );
+                  })}
                 </p>
               </div>
               

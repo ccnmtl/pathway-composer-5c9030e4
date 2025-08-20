@@ -338,7 +338,7 @@ const EditPathwayModal: React.FC<EditPathwayModalProps> = ({
         ensemble: formData.ensemble,
         activity: formData.activity,
         instruction: formData.instruction,
-        exercise: formData.exercise,
+        exercise: isExerciseManuallyEdited ? formData.exercise : getFilteredExerciseContent(), // Save filtered content if not manually edited
         facultyNotes: formData.facultyNotes
       });
     }

@@ -340,7 +340,7 @@ const AddPathwayModal: React.FC<AddPathwayModalProps> = ({
       ensemble: formData.ensemble,
       activity: formData.activity,
       instruction: formData.instruction,
-      exercise: formData.exercise,
+      exercise: getFilteredExerciseContent(), // Save the filtered content
       facultyNotes: formData.facultyNotes
     };
     onSave(newPathway);
