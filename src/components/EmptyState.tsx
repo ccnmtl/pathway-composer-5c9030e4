@@ -23,7 +23,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({ category }) => {
     <div className="text-center py-12">
       <div className="inline-block px-4 py-2 rounded-lg text-white" style={{ backgroundColor: getBackgroundColor() }}>
         <p>No {category} pathways yet.</p>
-        <p className="py-2">Click the "Add a Path" button to get started!</p>
+        <p className="py-2">Click the "Add a Guide" button to get started!</p>
       </div>
     </div>
   );
