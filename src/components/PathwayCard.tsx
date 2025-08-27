@@ -175,9 +175,9 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
+                    <AlertDialogTitle>Delete Guide</AlertDialogTitle>
                     <AlertDialogDescription>
-                      Are you sure you want to delete this pathway? This action cannot be undone.
+                      Are you sure you want to delete this guide? This action cannot be undone.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
@@ -303,9 +303,9 @@ const PathwayCard: React.FC<PathwayCardProps> = ({ pathway, onEdit, onCopy, onDe
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Delete Pathway</AlertDialogTitle>
+                    <AlertDialogTitle>Delete Guide</AlertDialogTitle>
                     <AlertDialogDescription>
-                      Are you sure you want to delete this pathway? This action cannot be undone.
+                      Are you sure you want to delete this guide? This action cannot be undone.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
